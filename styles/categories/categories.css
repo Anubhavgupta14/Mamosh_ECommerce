@@ -1,0 +1,227 @@
+.ad-cat-cont {
+    width: 50%;
+    min-height: 100%;
+    position: relative;
+}
+
+.ad-cat-cont .cats{
+    width: 80%;
+    position: relative;
+   margin: 15px auto;
+}
+.catsCard_editor{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(calc(100% + 20px),-50%);
+}
+.aps-title-svg svg{
+    /* margin-right: 20px; */
+    position: absolute;
+    right: 30px;
+    cursor: pointer;
+    font-size: 30px;
+}
+.ad-cat-cont .cats,
+.prodCard {
+    background-color: rgba(255, 255, 255, .7) !important;
+    box-shadow: var(--shadow-type1);
+}
+.aps-body-cont{
+    height: calc(100% - 70px );
+    overflow: auto;
+}
+
+.ad-mp {
+    margin-top: 60px;
+    position: relative;
+    display: flex;
+    min-width: 200%;
+    transition: all .3s ease;
+}
+.ad-mp-three{
+    min-width: 300%!important;
+}
+.ad-mp-three .ad-cat-cont{
+    width: calc(100%/3)!important;
+}
+
+.ad-cat-cont .menu-close-btn {
+    left: 40px;
+    position: absolute;
+    top: -40px;
+}
+
+.fr-btn {
+    border: 1px solid var(--color-primary);
+    padding: 8px 25px;
+    border-radius: 25px;
+    color: var(--color-primary);
+    font-size: 15px;
+    background-color: transparent;
+    transition: all .3s ease;
+}
+
+.fr-btn:hover {
+    color: white;
+    background-color: var(--color-primary);
+    cursor: pointer;
+}
+.admin-path-right{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.add-pro-list-cont {
+    position: fixed;
+    top: 0px;
+    right: 0;
+    width: 37%;
+    z-index: 3;
+    height: calc(100%);
+    min-width: 380px;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transform: translateX(100%);
+    transition: .3 ease;
+}
+
+.prod-img {
+    height: 100%;
+    flex: 1 0 35%;
+}
+
+.prod-name {
+    flex: 1 0 65%;
+    font-size: 1rem;
+}
+
+.cats-left {
+    height: 100%;
+}
+
+.prod-img img {
+    max-width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.prod-btn {
+    border: 1px solid var(--color-primary);
+
+    padding: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--color-primary);
+    border-radius: 10px;
+}
+
+.catsCard_editor {
+    opacity: 0;
+}
+
+.catsCard:hover .catsCard_editor {
+    opacity: 1;
+    transition: 0.2s ease all;
+    transition-delay: 0.1s;
+}
+
+.catsCard_editor button {
+    border: none;
+    transition-delay: 0;
+    font-size: 1.2rem;
+    background: none;
+}
+
+.catsCard_editor button:hover {
+    color: var(--color-primary);
+}
+button.btn-danger:hover {
+    color: var(--color-danger);
+}
+.list-ap{
+    width: 90%;
+    height: 120px;
+    margin: 30px auto;
+    border-radius: 15px;
+    box-shadow: var(--shadow-type1);
+    display: flex;
+    position: relative;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 10px;
+}
+.list-ap-img{
+    height: 100px;
+    width: 100px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: auto 0;
+position: relative;
+}
+.list-ap-img img{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+.list-ap-name{
+    font-size: 18px;
+    width: calc(100% - 200px);
+}
+.list-ap-add{
+    position: absolute;
+    right: 20px;
+    height: 35px;
+    width: 65px;
+    border-radius: 25px;
+    cursor: pointer;
+    border: 1px solid #fc6e00;
+    font-size: 14px;
+    background: #fc6e00;
+    color: white;
+    display: flex;
+    gap: 4px;
+}
+.list-ap-add:hover{
+    background: none;
+    color: #fc6e00;
+}
+.add-pro-list-cont .loading-row{
+    background-color: #f9f9f9!important;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.add-pro-list-cont .wrapper{
+    width: 80%;
+}
+.add-pro-list-cont .list-ap{
+    width: 80%;
+    height: 90px;
+}
+.add-pro-list-cont .list-ap .list-ap-img{
+    height: 75px;
+    width: 75px;
+}
+.menu-cat-cont .list-ap{
+    height: 90px;
+    width: 70%;
+    background-color: rgba(255, 255, 255, 0.822);
+
+}
+.menu-cat-cont .list-ap .list-ap-img{
+    height: 80px;
+}
+.list-ap-delete{
+    background-color: red;
+    color: white;
+    /* padding: 10px 20px; */
+    width:90px;
+    gap: 5px;
+    cursor: pointer;
+    height: 35px;
+    border-radius: 25px;
+    font-size: 14px;
+    /* display: flex; */
+}
+.list-ap-delete:hover{
+    background-color: #ff6666;
+}

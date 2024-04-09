@@ -1,0 +1,87 @@
+.main_Wrapper {
+	padding: 2rem 1rem;
+}
+.top-coll{
+	position: relative !important;
+	top: 100px !important;
+}
+
+.searchBox {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.searchInput {
+	padding: 0.35rem 0.5rem;
+}
+
+.searchBtn {
+	position: absolute;
+	right: 0.5rem;
+	top: 50%;
+	transform: translateY(-50%);
+	border: none;
+	background: none;
+}
+
+.toolBar {
+	padding-inline: 2rem;
+}
+
+.toolBar button {
+	border: 1px solid var(--color-primary);
+	padding: 0.25rem 0.5rem;
+}
+
+.toolBar button span {
+	display: inline-block;
+	height: 1.5rem;
+	min-width: 0.25rem;
+	background-color: var(--color-primary);
+}
+
+.toolBar button {
+	opacity: 0.7;
+	transition: 0.2s ease all;
+}
+
+.toolBar button:hover,
+.toolBar button.active {
+	opacity: 1;
+	transition: 0.2s ease all;
+}
+
+.mainCollection {
+	display: grid;
+	gap: 2rem;
+	padding: 2rem;
+}
+
+.mainCollection_card {
+	border: none;
+	text-align: center;
+}
+
+.secondaryImg {
+	display: none;
+}
+
+.mainCollection_card .cardImg:hover .primaryImg {
+	display: none;
+}
+
+.mainCollection_card .cardImg:hover .secondaryImg {
+	display: block;
+}
+
+.mainCollection_card__cardFooter {
+	border: none;
+}
+
+.mainCollection_card__cardFooter>div {
+	justify-content: space-between;
+	width: 50%;
+	margin-inline: auto;
+}

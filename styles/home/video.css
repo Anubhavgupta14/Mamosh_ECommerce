@@ -1,0 +1,154 @@
+.heroSection {
+    background: rgb(229, 229, 229);
+    min-height: 99.9vh;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+}
+
+.heroMain {
+    justify-content: space-evenly;
+    display: flex;
+    align-items:self-start;
+}
+
+.heroMain>div {
+    width: 100%;
+}
+
+.mainTitle p {
+    width: 75%;
+    margin-right: auto;
+}
+
+.color-picker {
+    border-top: thin solid var(--faint-10);
+    padding-top: 1rem;
+}
+
+.heroCard .card-header {
+    border: none;
+    padding-block: 2rem;
+}
+
+.heroCard .card-body {
+    padding: 0 1rem;
+}
+
+.heroCard .card-footer {
+    padding-block: 2rem;
+    border-top: thin solid var(--faint-10);
+    margin-inline: 1rem;
+    padding-inline: 0;
+}
+
+.color-circle {
+    border: 1px solid rgba(128, 128, 128, 0.457);
+    padding: 0.2rem;
+    border-radius: 50%;
+    position: relative;
+    height: 1.5em;
+    width: 1.5em;
+
+}
+
+.color-circle button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 1em;
+    width: 1em;
+    border: none;
+    border-radius: 50%;
+}
+
+.bottle-size-selector {
+    padding-top: 1rem;
+
+    border-top: thin solid var(--faint-10)
+}
+
+input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+label {
+    opacity: 0.7;
+    line-height: 1.5;
+}
+
+label.active {
+    text-decoration: underline;
+    opacity: 1;
+}
+
+.info-card p {
+    font-size: 0.9rem;
+}
+
+.productDetailsCard p {
+    font-size: 0.9rem;
+}
+
+@media screen and (max-width: 767px) {
+    .heroMain>div {
+        flex-direction: column;
+    }
+
+    .heroCard {
+        width: 100%;
+        margin: 0;
+        margin-top: 2rem;
+    }
+}
+
+.accordion-button::after {
+    background-image: url("https://img.icons8.com/ios/50/plus--v1.png");
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url("https://img.icons8.com/ios/50/minus.png");
+}
+
+.heroContainer {
+    align-items: flex-start;
+    position: relative;
+    min-height: 100vh;
+}
+
+.heroRight {
+    height: fit-content;
+    width: 35%;
+    margin-left: auto;
+}
+
+.productCards .cardImg {
+    flex: 1 0 7.5%;
+}
+
+.productCards {
+    border: none;
+}
+
+.productCards .card-body {
+    display: flex;
+    align-items: center;
+    flex: 1 0 80%;
+}
+
+.productCards .card-title {
+    font-size: 1rem;
+}
+
+.productCards .card-subtitle span {
+    display: block;
+}
+
+.productCards .card-body .card-description {
+    flex: 1 0 70%;
+}
+.heroLeft{
+    top: 6rem!important;
+}

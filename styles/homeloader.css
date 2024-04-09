@@ -1,0 +1,58 @@
+.wrapper-r {
+
+}
+
+.loading-row-r {
+  width: 90%;
+    /* float: left; */
+    border-radius: 10px;
+    /* margin-bottom: 20px; */
+    background-color: white;
+    /* margin-top: 20vh; */
+    /* margin-inline: ; */
+    margin: 20px auto;
+    margin-top: 50px;
+
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}
+
+.avatar-r, .text-r {
+  display: inline-block;
+}
+
+.avatar-r {
+  width: 100%;
+  height: 100px;
+  margin-right: 15px;
+  border-radius: 5px;
+}
+
+.text-r {
+  height: 15px;
+  border-radius: 2px;
+  margin: 4px 0 8px;
+}
+
+.w-100-load-r {
+  width: calc(100% - 95px);
+}
+
+.w-70-r {
+  width: calc(70% - 95px);
+}
+
+@keyframes loading {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+.loading-animate-r {
+  background: linear-gradient(90deg, #f2f2f2 25%, #e6e6e6 37%, #f2f2f2 63%);
+  animation: loading 1.4s ease infinite;
+  background-size: 400% 100%;
+}

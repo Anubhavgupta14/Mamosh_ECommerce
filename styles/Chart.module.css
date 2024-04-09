@@ -1,0 +1,103 @@
+#analytics {
+    padding: 0px;
+}
+#analytics span.title {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.5);
+}
+#analytics h5.count {
+    font-size: 18px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1);
+    margin-bottom: 0px;
+}
+#analytics .graphDiv {
+    position: relative;
+    bottom: -5px;
+    width: 100%;
+    height: 100px;
+    min-height: 100px;
+    margin: auto;
+    overflow: hidden;
+
+}
+#analytics .cardHeading {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+#analytics .graphCardDiv {
+    position: relative;
+    width: 100%;
+    height: 390px;
+    min-height: 390px;
+    margin: auto;
+    overflow: hidden;
+}
+#analytics .graphCardAuto {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+#analytics .graphCardAuto .progressbarItems {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    padding: 20px;
+}
+#analytics .graphCardAuto .progressbarItems .items .linearProgressBar {
+    height: 8px;
+    border-radius: 10px;
+}
+#analytics .graphCardAuto .progressbarItems .items .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+#analytics .graphCardAuto .progressbarItems .items .content label.title {
+    font-size: 16px;
+    font-weight: 600;
+}
+#analytics .graphCardAuto .progressbarItems .items .content .count {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+#analytics .graphCardAuto .progressbarItems .items .content .count hr {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+#analytics .graphCardAuto .progressbarItems .items .content .count span.percentage {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+}
+#analytics .graphCardAuto .progressbarItems .items .content .count span.values {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+}
+#analytics .pageViewsTitle {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+#analytics .pageLink {
+    display: block;
+    /* margin-bottom: 5px; */
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.5);
+}
+#analytics hr {
+    opacity: 0.5;
+}

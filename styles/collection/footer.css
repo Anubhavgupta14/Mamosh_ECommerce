@@ -1,0 +1,69 @@
+.main-footer{
+    height: 80vh;
+    margin-top: 4vh;
+}
+.footer-detail{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 5vh;
+}
+.f1{
+    width: 100%;
+    height: 25vh;
+    padding: 5vh;
+}
+.p-mar{
+    margin-bottom: 2vh;
+    cursor: pointer;
+}
+.sign-div{
+    height: 20vh;
+    padding: 5vh;
+}
+.input{
+    background-color: white;
+    border: 0;
+    font-family: myFont;
+    border-bottom: 2px solid;
+    border-bottom-color: black;
+    border-radius: 0;
+    max-width: 300px;
+    padding: 10px 45px 10px 0;
+    width: 100%;
+}
+.social{
+    margin-block: 2vh;
+    font-size: 25px;
+    display: flex;
+    gap: 2vh;
+    align-items: center;
+}
+.mail-logo{
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 8px;
+    right: -44px;
+}
+.sub{
+    cursor: pointer;
+}
+
+@media screen and (max-width:768px){
+    .f1{
+        padding: 0vh;
+        height: 12vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .footer-detail{
+        flex-direction: column;
+        gap: 8vh;
+        justify-content: center;
+        align-items: center;
+    }
+}

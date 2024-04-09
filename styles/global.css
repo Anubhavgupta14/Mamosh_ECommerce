@@ -1,0 +1,242 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--color-primary: #3b82f6;
+	--border-color: rgb(230, 235, 241);
+	--background-color: rgb(230, 244, 255);
+	--color-danger: rgba(255, 0, 0, 0.834);
+	--shadow-type1: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	--faint-10: rgba(0, 0, 0, 0.1)
+}
+
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;400;500;600;700&display=swap'); */
+
+body {
+	/* font-family: 'IBM Plex Sans', sans-serif; */
+	font-family: "Public Sans", sans-serif!important;
+}
+
+
+h2 {
+	font-weight: 600;
+	font-size: 2.5rem;
+}
+
+h2 span {
+	display: block;
+}
+
+p {
+	margin: 0;
+}
+
+section {
+	padding: 2rem 5%;
+}
+
+.table>:not(caption)>*>* {
+	background-color: #fafafa;
+}
+
+.no-num::-webkit-outer-spin-button,
+.no-num::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+.no-num[type=number] {
+	-moz-appearance: textfield;
+}
+
+/* Utility Classes */
+.stickyTop {
+	position: sticky;
+	top: 0;
+}
+
+.align-center {
+	align-items: center;
+}
+
+.align-start {
+	align-items: flex-start;
+}
+
+.muted {
+	opacity: 0.65;
+}
+
+.flex-all {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.justify-between {
+	justify-content: space-between;
+}
+
+.g-1 {
+	gap: 0.5rem;
+}
+
+.g-2 {
+	gap: 1rem;
+}
+
+.g-4 {
+	gap: 2rem;
+}
+
+.heroCard .btn-primary {
+	width: 60%;
+}
+
+.btn-primary {
+	padding: 0.75rem 1rem;
+	text-transform: uppercase;
+	background-color: black;
+	color: #fff;
+	transition: 0.2s ease all;
+	border-radius: 40px;
+}
+
+.btn-primary:hover {
+	transform: translateY(-2.5%);
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 2.5px 5px, rgba(0, 0, 0, 0.22) 0px 2.5px 5px;
+}
+.zoomed-image {
+	background-size: cover;
+	cursor: pointer;
+ }
+/* 
+@font-face {
+    font-family:myFont;
+    src: url(/public/font.ttf);
+}
+@font-face {
+    font-family:myFont2;
+    src: url(/public/font2.ttf);
+} */
+
+*{
+    margin: 0;
+    padding: 0;
+}
+/* body{
+    font-family: myFont;
+} */
+.main{
+    height: 100vh;
+    /* width: 100%; */
+    /* border: 0.5px solid black; */
+    /* margin: 75px 75px 75px 75px; */
+    margin-top: 75px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    gap: 9vh;
+}
+
+.dis{
+    display: none;
+}
+
+::-webkit-scrollbar {
+	display: none;
+    width: 3px;
+    height: 3px; 
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(105,114,123);
+    border-radius: 3px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+
+  h4{
+	font-size: 1.5rem;
+  }
+
+.admin-inp {
+	height: 40px;
+	border-radius: 5px;
+	font-size: 16px;
+	padding: 0 10px;
+	border: 1px solid #3b82f6;
+	outline: none;
+	margin: 10px 0;
+}
+.admin-inp:hover{
+	background-color: rgba(230, 244, 255, 0.5)!important;
+    border: 1px solid #3b82f6;
+}
+.admin-inp:focus{
+		border: 1px solid #3b82f6;
+		background: none;
+}
+.min-w-100 {
+	min-width: 100%;
+}
+.modal-bg {
+	position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 3;
+    background-color: #2020205f;
+    transition: none;
+}
+.visibility-btn {
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+	cursor: pointer;
+}
+.visibility-icon {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	z-index: 1;
+}
+
+.MuiRadio-root.Mui-checked {
+	color: #3b82f6!important; /* Change color when checked */
+	opacity: 1!important; /* Change opacity when disabled */
+}
+.loader {
+	border: 2px solid #f3f3f3;
+	border-radius: 50%;
+	border-top: 2px solid #3498db;
+	width: 25px;
+	height: 25px;
+	-webkit-animation: spin 2s linear infinite; /* Safari */
+	animation: spin 2s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+	0% { -webkit-transform: rotate(0deg); }
+	100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+  }

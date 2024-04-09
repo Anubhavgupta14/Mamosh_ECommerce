@@ -1,0 +1,253 @@
+.main-div{
+    height: 100vh;
+    width: 100%;
+    padding: 5vh;
+    left: 10vh;
+}
+.main-wrapper{
+    padding: 5px;
+    position: relative;
+    top: 75px;
+    z-index: -5;
+}
+.flex-fil{
+    display: flex;
+    gap: 10px;
+}
+.img_main_col{
+    /* height: 400px;
+    width: 270px;
+    object-fit: cover; */
+    max-width: 100%;
+}
+.search-bar{
+    width: 100%;
+    display: flex;
+    border: 1px solid #e8e8e1;
+    cursor: pointer;
+    position: relative;
+}
+.search{
+    width: 100%;
+    height: 35px;
+    border: 0;
+    cursor: pointer;
+    padding: 2px 0px 2px 10px;
+    font-size: 14px;
+    letter-spacing: normal;
+    line-height: 1.4285714286;
+    margin: 0;
+    text-overflow: ellipsis;
+    text-transform: none;
+    white-space: nowrap;
+    font-weight: 400;
+}
+.search-btn{
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    position: absolute;
+    right: 3%;
+}
+
+.menu-view{
+    width: 100%;
+    /* border: 0.5px solid; */
+    margin-top: 3vh;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.box{
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    border: 1px solid #e8e8e1;
+    display: flex;
+    gap: 2px;
+    padding: 5px;
+    cursor: pointer;
+    opacity: 1;
+}
+
+.box4{
+    width: 40px;
+}
+.col-search-div{
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.view{
+    display: flex;
+    align-items: center;
+    gap: 2vh;
+}
+.view p{margin-right: 10px;}
+.boxes{
+    height: 18px;
+    width: 2px;
+    background-color: #e8e8e1;
+}
+
+.view-btn{
+    width: 15vw;
+    border: 1px solid #e8e8e1;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2vh;
+    cursor: pointer;
+}
+
+.view-btn p{
+    font-size: 14px;
+    font-weight: 400;
+}
+.toggle-div{
+    height: 200px;
+    display: none;
+    width: 15vw;
+    /* right: 5.3%; */
+    background-color: #fff;
+    border: 1px solid #e8e8e1;
+    /* top: 27%; */
+    bottom: 0;
+    left: 0;
+    transform: translateY(100%);
+    position: absolute;
+}
+
+.toggle-visible{
+    display: block;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.toggle-div ul{
+    width: 100%;
+    background-color: white;
+    padding: 0;
+}
+
+.toggle-div ul li{
+    text-decoration: none;
+    list-style: none;
+    font-size: 13px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.toggle-div ul li:hover{
+    text-decoration: underline;
+}
+.toggle-div ul li:active{
+    text-decoration: underline;
+}
+
+.arrow{
+    -webkit-transform: rotateX(180deg);
+    transform: rotateX(180deg);
+}
+.ar{
+    transition: transform 0.5s;
+}
+
+.store{
+    margin-top: 10vh;
+    display: flex;
+    flex-wrap: wrap;
+    /* gap: 3vw; */
+    width: 100%;
+}
+.store-2{
+    gap: 2vw;
+}
+.store-3{
+    gap: 1.6vw;
+}
+
+.store-4{
+    gap: 24px;
+}
+
+.item{
+    height: 70vh;
+}
+
+.item2{
+    height: 88vh;
+    width: 50vh;
+    /* cursor: pointer; */
+    padding: 1vh;
+}
+.item3{
+    height: 128vh;
+    width: 75vh;
+    /* cursor: pointer; */
+    padding: 1vh;
+}
+
+.item-name{
+    font-size: 16px;
+    margin: 10px 0;
+}
+.size{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top:2vh;
+    gap: 2vh;
+
+}
+.size-box{
+    width: 4vh;
+    height: 3vh;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid #bfbfb9;
+}
+.size-box:hover{
+    background-color: black;
+    color: white;
+}
+
+.box:hover {
+    border: 1px solid black; /* Change border color to #e8e8e1 */
+  }
+  
+  .box:hover .boxes {
+    background-color: black; /* Change background color of boxes to #e8e8e1 */
+  }
+
+  .activebox_border{
+    border: 1px solid;
+  }
+  .activebox_bg{
+    background-color: #000;
+  }
+  .active-2{
+    width: 40vw;
+  }
+  .active-3{
+    width: 30vw;
+  }
+  .active-4{
+    width: 22vw;
+  }
+  .product-box{
+    margin-top: 20px;
+  }
+  .active-3 .item-name{
+    font-size: 17px;
+  }
+  
+  .active-2 .item-name{
+    font-size: 18px;
+  }

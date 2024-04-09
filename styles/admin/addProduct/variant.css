@@ -1,0 +1,111 @@
+.variant-bg{
+    background-color: rgba(0, 0, 0, .4);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 4;
+    top: 0;
+    left: 0;
+}
+.variant2{
+    padding: 30px 35px;
+    width: 520px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    animation-name: variant;
+    animation-duration: .3s;
+    overflow-y: scroll;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    height: 390px;
+}
+.variant{
+    padding: 30px 35px;
+    width: 520px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    animation-name: variant;
+    animation-duration: .3s;
+    overflow-y: scroll;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    height: 450px;
+}
+
+@keyframes variant {
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+@keyframes variant2 {
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+.variant h4{
+    margin-bottom: 30px;
+}
+.variant2 h4{
+    margin-bottom: 30px;
+}
+.w100{
+    width: 100%;
+}
+.mt10{
+    margin-top: 24px;
+}
+.p-info{
+    font-size: 15px;
+    color: rgba(0, 0, 0, .7);
+}
+.rti--container{
+border: none!important;
+}
+.rti--container:focus-within {
+    border-color: none!important;
+    box-shadow: none!important;
+}
+.var-btns{
+    display: flex;
+    justify-content: right;
+    margin-top: 50px;
+    gap: 15px;
+}
+.var-btns2{
+    display: flex;
+    justify-content: right;
+    gap: 15px;
+}
+.var-btn1{
+    padding: 4px 20px;
+    font-size: 15px;
+    border: 1px solid #3b82f6;
+    border-radius: 20px;
+    color: #3b82f6;
+    cursor: pointer;
+}
+.var-btn1:hover{
+    background-color: #306bcd;
+    color: white;
+}
+.var-btn2{
+    padding: 4px 20px;
+    cursor: pointer;
+    font-size: 15px;
+    border: 1px solid #3b82f6;
+    border-radius: 20px;
+    background: #3b82f6;
+    color: white;
+}
+.var-btn2:hover{
+    background-color: #306bcd;
+    border: 1px solid #306bcd;
+}

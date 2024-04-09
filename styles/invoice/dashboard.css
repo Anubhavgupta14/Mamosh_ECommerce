@@ -1,0 +1,254 @@
+.dash-box{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2vh;
+    margin-top: 5vh;
+}
+
+.innerdash{
+    width: 250px;
+    border: 1px solid rgb(230, 235, 241);
+    height: 150px;
+    border-radius: 4px;
+    padding: 15px;
+    background: white;
+}
+.innerdash2{
+    width: 400px;
+    border-radius: 4px;
+    background: white;
+    padding: 15px;
+    border: 1px solid rgb(230, 235, 241);
+    height: 150px;
+    background: linear-gradient(to right, rgb(9, 88, 217), rgb(22, 119, 255));
+}
+.dash-p{
+    font-weight: 600;
+    font-size: 14px;
+}
+.dash-p2{
+    color: rgb(116, 115, 115);
+    font-size: 14px;
+}
+.head-innerdash{
+    display: flex;
+    justify-content: space-between;
+}
+.main-innerdash{
+    display: flex;
+    gap: 1vh;
+    align-items: center;
+}
+.main-innerdash{
+
+}
+.money-dash{
+    font-weight: 600;
+    font-size: 21px;
+    letter-spacing: 1px;
+}
+.money-dash2{
+    font-weight: 600;
+    font-size: 21px;
+    color: white;
+    margin-top: 2vh;
+    letter-spacing: 1px;
+}
+.head-dash2{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.small-div{
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1677ff;
+}
+.left-inner2{
+    display: flex;
+    align-items: center;
+    gap: 2vh;
+}
+.p-dash2{
+    color: white;
+    font-size: 14px;
+}
+.options-inv{
+    width: 100%;
+    display: flex;
+    gap: 2.5vh;
+    padding-top: 3vh;
+    padding-inline: 17px;
+}
+.op-inv{
+    display: flex;
+    cursor: pointer;
+    gap: 2vh;
+    justify-content: center;
+    height: 40px;
+}
+.op-inv p{
+    font-size: 15px;
+}
+.op-box{
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+    margin-top: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #c3d9f8;
+}
+.op-box2{
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+    margin-top: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f6ffed;
+}
+.op-box3{
+    width: 22px;
+    margin-top: 13px;
+    height: 22px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fffbe6;
+}
+.op-box4{
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+    margin-top: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff1f0;
+}
+
+.foc{
+    box-shadow: -1px 2.5px 0px -1px #1677ff
+}
+
+.panel-inv{
+    display: flex;
+    box-shadow: 0px -1px 0px 0px rgb(230, 235, 241);
+    padding-inline: 11px;
+    justify-content: space-between;
+    padding-top: 3vh;
+}
+.search-inv{
+    border: 1px solid rgb(204, 208, 212);
+    display: flex;
+    align-items: center;
+    padding: 6px;
+    gap: 1vh;
+    border-radius: 4px;
+
+}
+.search-inv:focus{
+    outline: none;
+}
+input:focus {
+    outline: none;
+}
+select:focus {
+    outline: none;
+}
+.input-inv{
+    border: none;
+
+}
+
+.btns-inv{
+    display: flex;
+    align-items: center;
+    gap: 2vh;
+}
+
+.select-inv{
+
+}
+.sel-inv{
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid rgb(204, 208, 212);
+    width: 30vh;
+}
+.btn-inv{
+    padding: 8px;
+    border-radius: 4px;
+    background-color: #1677ff;
+    color: white;
+    border: none;
+}
+.btn-inv:hover{
+    background-color: #105ac2;   
+}
+.table-div{
+    margin-top: 2.5vh;
+}
+.icons-inv{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.user-info{
+    display: flex;
+    gap: 2vh;
+    align-items: center;
+}
+.photo-user{
+    width: 35px;
+}
+.name-user{
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+.email-user{
+    color: rgb(150, 150, 150);
+}
+.status-user{
+    background-color: #e8ffd1;
+    padding: 10px;
+    border-radius: 4px;
+}
+.status-user p{
+    color: green;
+}
+.header-cell {
+    color: grey;
+}
+.t-inv{
+    font-size: 13px;
+}
+.arrow-inv{
+    font-size: 22px;
+}
+.pro-inv{
+    display: flex;
+    align-items: flex-end;
+    gap: 2vh;
+}
+.percent-inv{
+    font-size: 15px;
+    color: white;
+    height: 15px;
+}
+
+.box-div-inv{
+    display: flex;
+    align-items: center;
+
+}

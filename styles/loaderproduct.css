@@ -1,0 +1,89 @@
+.wrapper2 {
+    margin-left: 45px;
+    display: flex;
+    gap: 3vh;
+  }
+.flex2{
+    display: flex;
+    gap: 10vh;
+    margin: 70px;
+}
+.mb{
+    margin-bottom: 5vh !important;
+}
+.mb2{
+    margin-block: 3vh;
+}
+  
+  .loading-row2 {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: white;
+  }
+  
+  .avatar2, .text2 {
+    display: inline-block;
+    float: left;
+  }
+  
+  .avatar2 {
+    width: 75px;
+    height: 100px;
+    border-radius: 5px;
+    margin-block: 3vh 
+  }
+  .avatar3 {
+    width: 615px;
+    height: 100vh;
+    border-radius: 5px;
+    margin-block: 3vh 
+  }
+  .avatar-text {
+    width: 615px;
+    height: 20px;
+    border-radius: 5px;
+  }
+  .avatar-text2 {
+    width: 500px;
+    height: 10px;
+    border-radius: 5px;
+  }
+  .avatar-text3 {
+    width: 400px;
+    height: 10px;
+    border-radius: 5px;
+  }
+  
+  .text2 {
+    height: 15px;
+    border-radius: 2px;
+    margin: 4px 0 8px;
+  }
+  .text3 {
+    height: 15px;
+    border-radius: 2px;
+    margin: 4px 0 8px;
+  }
+  
+  .w-100-load {
+    width: calc(100% - 95px);
+  }
+  
+  .w-70 {
+    width: calc(70% - 95px);
+  }
+  
+  @keyframes loading {
+    0% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0 50%;
+    }
+  }
+  .loading-animate2 {
+    background: linear-gradient(90deg, #f2f2f2 25%, #e6e6e6 37%, #f2f2f2 63%);
+    animation: loading 1.4s ease infinite;
+    background-size: 400% 100%;
+  }

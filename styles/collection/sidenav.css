@@ -1,0 +1,99 @@
+.side-main{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    left: 0;
+}
+.side-bg{
+    width: 100%;
+    transition: all .3s;
+    height: 100%;
+    position: relative;
+}
+.side-wrapper{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 45%;
+    height: 100%;
+    background-color: white;
+   
+    transition: all .5s ease;
+    transform: translateX(-100%);
+}
+.head svg{
+    transition: all .3s ease;
+}
+.side{
+   position: relative;
+   width: 100%;
+   height: 100%;
+}
+.side-rel{
+    padding: 30px 50px;
+    height: calc(100% - 120px);
+    overflow-y: auto;
+
+    position: relative;
+}
+.side-down{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-top: 1px solid rgba(0,0,0,.5);
+    height: 120px;
+}
+.collection{
+    width: 100%;
+    /* height: 15vh; */
+    max-height: 32vh;
+    overflow: auto;
+    padding: 0 10px;
+
+    /* padding-right: 10px;     */
+}
+.head{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    font-size: 18px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+.check{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+}
+.list{
+    display: flex;
+    margin-top: 8px;
+    cursor: pointer;
+    justify-content: space-between;
+    font-size: 13px;
+}
+.list:nth-child(1){
+    margin-top: 5px;
+}
+.br{
+    width: 100%;
+    margin-block: 4vh;
+    border: 0.3px solid rgba(0,0,0,.3);
+}
+
+.arr2{
+    transform: rotate(-90deg);
+}
+.filter-p{
+    font-size: 30px;
+    margin: 30px 0;
+    margin-bottom: 50px;
+}
+.check p,.qty{
+    font-size: 16px;
+}
