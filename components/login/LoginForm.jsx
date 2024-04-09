@@ -1,7 +1,7 @@
 // Importing necessary components from the 'react' and 'react-icons' libraries
 import React, { useState } from 'react';
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
-import {updateCartFromBackend} from "../../pages/features/cart/CartSlice"
+import {updateCartFromBackend} from "../../features/cart/CartSlice"
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from 'next/router';
 

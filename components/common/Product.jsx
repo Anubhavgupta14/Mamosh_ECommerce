@@ -2,13 +2,13 @@ import React from "react";
 import { useState, useRef, useEffect } from "react";
 import { FiMinus } from "react-icons/fi";
 import { IoIosArrowDown } from "react-icons/io";
-import {updateCartFromBackend} from "../../pages/features/cart/CartSlice"
+import {updateCartFromBackend} from "../../features/cart/CartSlice"
 import { FaPlus } from "react-icons/fa6";
 import { CiHeart } from "react-icons/ci";
 import ProductLoader from "../loaders/ProductLoader"
 import Footer from "./Footer";
 import toast, { Toaster } from "react-hot-toast";
-import { addtocart, editqty } from "../../pages/features/cart/CartSlice";
+import { addtocart, editqty } from "../../features/cart/CartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { IoPlayCircleOutline } from "react-icons/io5";
 import { useRouter } from 'next/router';
