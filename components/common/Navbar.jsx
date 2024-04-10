@@ -29,7 +29,7 @@ const Navbar = () => {
 
     useEffect(() => {
         let func = async () => {
-            let res = await fetch('https://mamosh-backend.vercel.app/api/menu')
+            let res = await fetch(`${process.env.NEXT_PUBLIC_backendurl}/api/menu`)
             console.log(res);
             let data = await res.json();
             console.log(data,"data")

@@ -78,7 +78,7 @@ export const CartSlice = createSlice({
       const cartData = action.payload;
       console.log("slice mai", cartData)
       return{
-        state, ...cartData
+         ...cartData
       }
     },
   },
