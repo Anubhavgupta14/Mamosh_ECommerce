@@ -100,6 +100,23 @@ const Checkout = () => {
     }
     return result;
   };
+  const saveorder = async()=>{
+    try{
+      const response = await fetch(`https://mamosh-backend.vercel.app/api/orders/saveorders`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userId:cart.userId, orders: cartdata.cart}),
+      });
+
+      const responseData = await response.json();
+      console.log(responseData) 
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
   const handleGenerateOrderId = async() => {
     const newOrderId = generateOrderId();
     setOrderId(newOrderId);
@@ -120,12 +137,15 @@ const Checkout = () => {
     catch(err){
       console.log(err)
     }
+    saveorder();
     router.push(`/payment?id=${newOrderId}&amount=${total}`);
   };
 
   const dispatch = useDispatch();
   const cartdata = useSelector((state) => state.cart);
-  console.log(cartdata);
+  console.log(cartdata,"yahi haii ");
+
+  
 
   const checkErrors = () => {
     let hasErrors = false;
@@ -272,7 +292,7 @@ const Checkout = () => {
       }
 
       const response = await fetch(
-        `https://mamosh-backend.vercel.app/api/user/checkaddress`,
+        `https://mamosh-backend.vercel.app/api/address/checkaddress`,
         {
           method: "POST",
           headers: {

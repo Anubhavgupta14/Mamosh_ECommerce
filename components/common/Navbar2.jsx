@@ -193,7 +193,7 @@ const Navbar = () => {
           <div
             className="navbar-logo"
             onClick={() => {
-              navigate("/");
+              router.push("/");
             }}
           >
             Mamosh

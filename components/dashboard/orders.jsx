@@ -94,9 +94,14 @@ const General = () => {
   useEffect(() => {
     const func = async () => {
       try {
-        const response = await fetch(
-          "https://mamosh-backend.vercel.app/api/products"
-        );
+        const token = localStorage.getItem('token')
+        const response = await fetch(`https://mamosh-backend.vercel.app/api/orders/getorders`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ token}),
+      });
 
         if (!response.ok) {
           throw new Error("Failed to fetch data");

@@ -103,7 +103,7 @@ const General = ({email}) => {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        `https://mamosh-backend.vercel.app/api/address`,
+        `https://mamosh-backend.vercel.app/api/address/checkaddress`,
         {
           method: "POST",
           headers: {

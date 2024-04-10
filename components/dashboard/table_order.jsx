@@ -81,15 +81,18 @@ const Table = ({ columns, rows, editItem,setDeleteProduct }) => {
                   <td>
                     <div className={style.featureBox}>
                       <div className={style.tableImg}>
-                        <img src={items.images[0]} fill alt={items.name} />
+                        <img src={items.img} fill alt={items.name} />
                       </div>
                       <div className={style.tableContent}>
                         <label className={style.tableTitle}>{items.name}</label>
                         <span className={style.tableCollections}>
-                          {`${items.variantsCount} Variations${
-                            collections ? " | " + collections : ""
-                          }`}
+                          {`Qty :${items.qty}`}
                         </span>
+                        {items.variants[0].length && 
+                        <span className={style.tableCollections}>
+                          {`Variants :${items.variants}`}
+                        </span>
+                        }
                       </div>
                     </div>
                   </td>

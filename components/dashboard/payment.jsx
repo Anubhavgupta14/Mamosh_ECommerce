@@ -59,8 +59,8 @@ const Layout = ({ email }) => {
       }
 
       const userData = await response.json();
-      console.log("Data :", userData.paymentData);
-      Setpaymentcard(userData.paymentData);
+      console.log("Data :", userData);
+      Setpaymentcard(userData);
     } catch (error) {
       console.error("Error fetching user data:", error);
     }
