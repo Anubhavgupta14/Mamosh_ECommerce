@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaSort } from "react-icons/fa";
 import { MdOutlineOpenInNew } from "react-icons/md";
 import style from "../../styles/common/Table.module.css";
@@ -7,6 +7,7 @@ import style from "../../styles/common/Table.module.css";
 const Table = ({ columns, rows, editItem,setDeleteProduct }) => {
   // const navigate = useNavigate();
   const [openModel, setOpenModel] = useState(false);
+  const [prices, setPrices] = useState([]);
   const [open, setOpen] = useState({ right: false });
   const [statusValue, setStatusValue] = useState(0);
   const [value, setValue] = useState([20, 37]);
@@ -41,6 +42,51 @@ const Table = ({ columns, rows, editItem,setDeleteProduct }) => {
     { id: 0, name: "Inactive" },
     { id: 1, name: "Active" },
   ];
+  const [finalprice, Setfinalprice] = useState(0);
+
+  useEffect(() => {
+    const fetchPrices = async () => {
+      const updatedPrices = await Promise.all(
+        rows.map(async (el) => {
+          // Start from index 1
+          try {
+            const response = await fetch(
+              `https://mamosh-backend.vercel.app/api/products/getFinalPrice`,
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  productid: el.productid,
+                  variants: el.variants[0], // assuming variants is an array and you want to send the first variant
+                }),
+              }
+            );
+            const data = await response.json();
+            console.log("plplpll", data);
+            return data; // Assuming you get the price from the response
+          } catch (error) {
+            console.error("Error fetching price:", error);
+            return null;
+          }
+        })
+      );
+      setPrices(updatedPrices);
+      console.log("kokok", updatedPrices);
+      // let sum = 0;
+      // for (let i = 0; i < updatedPrices.length; i++) {
+      //   sum += updatedPrices[i] * rows[i].qty;
+      // }
+      // console.log("total amount", sum);
+      // Settotalamount(sum);
+    };
+    {
+      rows && fetchPrices();
+    }
+  }, [rows]);
+
+
   return (
     <>
       <div className={style.tableCard}>
@@ -100,10 +146,10 @@ const Table = ({ columns, rows, editItem,setDeleteProduct }) => {
                   <td>
                     20-04-2024
                   </td>
-                  <td>2000</td>
+                  <td>{prices[i]}</td>
                   <td >
                     <span className={`${items.status == true?style.activeStatus:style.inactiveStatus}`}>
-                    {items && items.status === true ? "Delivered" : "Pending"}
+                    {items && items.status === false ? "Pending" : "Delivered"}
                     </span>
                     {/* Delivered */}
                     {/* <select className={style.fieldsSelect} name="status" value={statusValue} onChange={handleSelectChange}>
