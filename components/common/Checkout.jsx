@@ -117,11 +117,29 @@ const Checkout = () => {
       console.log(err)
     }
   }
+  const saveordernologin = async()=>{
+    try{
+      const response = await fetch(`https://mamosh-backend.vercel.app/api/orders/saveordersnologin`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userId:inputs[0].input, orders: cartdata.cart}),
+      });
+
+      const responseData = await response.json();
+      console.log(responseData) 
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
   const handleGenerateOrderId = async() => {
     const newOrderId = generateOrderId();
     setOrderId(newOrderId);
     localStorage.removeItem("persist:root");
     const token = localStorage.getItem('token');
+    if(token){
     try{
       const response = await fetch(`https://mamosh-backend.vercel.app/api/addcart/checkout`, {
         method: 'POST',
@@ -139,6 +157,12 @@ const Checkout = () => {
     }
     saveorder();
     router.push(`/payment?id=${newOrderId}&amount=${total}`);
+  }
+  else{
+    saveordernologin();
+    window.location.reload();
+    router.push(`/payment?id=${newOrderId}&amount=${total}`);
+  }
   };
 
   const dispatch = useDispatch();
@@ -217,6 +241,56 @@ const Checkout = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ userId: cart.userId, addressData: requestData }),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Failed to save address");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log("Address saved successfully:", data);
+        })
+        .catch((error) => {
+          console.error("Error saving address:", error);
+        });
+    } else {
+      // There are errors, do not set addresssaved to true
+      Setaddresssaved(false);
+    }
+  };
+  const handleSubmitnologin = (event) => {
+    // Prevent default form submission
+    event.preventDefault();
+
+    // Check for errors
+    console.log("er");
+    const hasErrors = checkErrors();
+    console.log(hasErrors);
+
+    // If there are no errors, set addresssaved to true and send the data to the API
+    if (!hasErrors) {
+      Setaddresssaved(true);
+
+      // Construct the data to send to the API
+      const requestData = {
+        firstname: inputs[1].input,
+        lastname: inputs[2].input,
+        flat: inputs[4].input,
+        address: Delivery[1].input,
+        phone: inputs[3].input,
+        city: Delivery[2].input,
+        country: Delivery[0].input,
+        pincode: Delivery[4].input,
+      };
+
+      // Make a POST request to the API
+      fetch(`https://mamosh-backend.vercel.app/api/user/saveaddressnologin`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId: inputs[0].input, addressData: requestData }),
       })
         .then((response) => {
           if (!response.ok) {
@@ -365,7 +439,7 @@ const Checkout = () => {
           {!user ? (
             <>
               Already have an account?{" "}
-              <a href="/signin">
+              <a style={{cursor:'pointer'}} onClick={()=>{router.push("/login")}}>
                 <div className="checkout-in">Log in </div>
               </a>
               for a faster checkout.
@@ -465,7 +539,7 @@ const Checkout = () => {
                   <button
                     className="fr-save"
                     type="submit"
-                    onClick={handleSubmit}
+                    onClick={handleSubmitnologin}
                   >
                     Submit
                   </button>
@@ -492,14 +566,11 @@ const Checkout = () => {
                   </p>
                   <p className="add-p">{inputs[0].input}</p>
                   <p className="add-p">{Delivery[1].input}</p>
-                  <p className="add-p">{inputs[3].input}</p>
+                  <p className="add-p">Phone no: {inputs[3].input}</p>
                   <p className="add-p">
                     {Delivery[2].input}, {Delivery[0].input}
                   </p>
-                  <p className="add-p">{Delivery[4].input}</p>
-                  <button className="fr-save" onClick={handleGenerateOrderId}>
-                    Pay Now
-                  </button>
+                  <p className="add-p">Pincode: {Delivery[4].input}</p>
                 </div>
               )}
             </div>
