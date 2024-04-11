@@ -83,7 +83,7 @@ const Sidenav = ({ filters,open,setOpen }) => {
         <div className="side">
           <div className="side-rel">
         <div className="filter-p">Filters</div>
-          {
+          { filters &&
             filters.map((filter, i) => {
               return (
                 <Filters filter={filter} key={i} i={i} />

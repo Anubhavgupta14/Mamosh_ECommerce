@@ -242,7 +242,7 @@ const Main = ({ data, aaya, queryParams, filtersopen, setfiltersOpen }) => {
             activeview2 ? "store-2" : activeview3 ? "store-3" : "store-4"
           }`}
         >
-          {data.map((el, i) => (
+          {data && data.map((el, i) => (
             <div
               key={i}
               className={`product-box ${

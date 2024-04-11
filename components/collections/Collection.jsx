@@ -6,6 +6,7 @@ import { useSearchParams } from 'react-router-dom';
 import CategoryLoader from "../loaders/CategoryLoader"
 import Navbar from "../common/Navbar2"
 import { useRouter } from 'next/router';
+import {FetchCat} from "../../api_fetch/admin/Collections"
 
 
 
@@ -41,19 +42,11 @@ const Collection = () => {
             setQueryParams({ menu, submenu });
     
             // Send the query parameters to the backend API
-            const response = await fetch('https://mamosh-backend.vercel.app/api/categories/fetchcat', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ menu, submenu }),
-            });
+            const responseData = await FetchCat({ menu, submenu })
     
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
-            }
-    
-            const responseData = await response.json();
+             if (!responseData) {
+               throw new Error('Network response was not ok');
+             }
             console.log(responseData, "data from backend");
             Setdata(responseData.products);
             setFilters(responseData.filters);

@@ -306,20 +306,11 @@ const Detail = ({ active, setactive, divcart, Setdivcart }) => {
         cart.map(async (el) => {
           // Start from index 1
           try {
-            const response = await fetch(
-              `https://mamosh-backend.vercel.app/api/products/getFinalPrice`,
-              {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  productid: el.productid,
-                  variants: el.variants[0], // assuming variants is an array and you want to send the first variant
-                }),
-              }
-            );
-            const data = await response.json();
+            const data = await FinalPrice({
+              productid: el.productid,
+              variants: el.variants[0], // assuming variants is an array and you want to send the first variant
+            })
+            // const data = await response.json();
             console.log("plplpll", data);
             return data; // Assuming you get the price from the response
           } catch (error) {

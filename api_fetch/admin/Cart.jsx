@@ -7,7 +7,9 @@ export const checkExist = async (token) => {
 }
 
 export const FinalPrice = async (body) => {
-    const res = await fetch(Const.Link + "api/products/getFinalPrice", { method: "POST", body: JSON.stringify(body) });
+    const res = await fetch(Const.Link + "api/products/getFinalPrice", { method: "POST",headers: {
+        'Content-Type': 'application/json',
+      }, body: JSON.stringify(body) });
     return ProcessAPI(res);
 }
 
