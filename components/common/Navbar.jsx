@@ -13,6 +13,7 @@ import Profilebtn from "./Profilebtn"
 import { useRouter } from 'next/router';
 import { BiArrowBack } from 'react-icons/bi';
 import { GoPerson } from "react-icons/go";
+import {getMenu, getSubMenu} from "../../api_fetch/admin/Menu"
 const Navbar = () => {
     const router = useRouter();
     const [products, setProducts] = useState(null)
@@ -29,16 +30,14 @@ const Navbar = () => {
 
     useEffect(() => {
         let func = async () => {
-            let res = await fetch(`${process.env.NEXT_PUBLIC_backendurl}/api/menu`)
-            console.log(res);
-            let data = await res.json();
+            let data = await getMenu()
+            
             console.log(data,"data")
-            let { error } = data;
-            if (error || !res.ok) {
-                alert(error || "Some error occurred");
-                return;
-            }
-            console.log(data);
+            // let { error } = data;
+            // if (error || !data.ok) {
+            //     alert(error || "Some error occurred");
+            //     return;
+            // }
             setCategories(data.reverse());
             Settemp(true)
         }
@@ -52,14 +51,14 @@ const Navbar = () => {
         setCome(false);
         console.log(categories, "")
         // return;
-        let res = await fetch(`https://mamosh-backend.vercel.app/api/submenu/${categories[index]._id}`)
-        console.log(res);
-        let data = await res.json();
-        let { error } = data;
-        if (error || !res.ok) {
-            alert(error || "Some error occurred");
-            return;
-        }
+        let data = await getSubMenu(categories[index]._id)
+        console.log(data);
+        // let data = await res.json();
+        // let { error } = data;
+        // if (error || !res.ok) {
+        //     alert(error || "Some error occurred");
+        //     return;
+        // }
         console.log(data);
         setSelectedCategory(index);
         setSubCategories(data.reverse());

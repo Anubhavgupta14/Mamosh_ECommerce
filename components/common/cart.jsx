@@ -1,50 +1,30 @@
 import React from "react";
 import { useState, useRef, useEffect } from "react";
 import { FiMinus } from "react-icons/fi";
-// import { IoIosArrowDown } from "react-icons/io";
 import { updateCartFromBackend } from "../../features/cart/CartSlice";
-// import { FaPlus } from "react-icons/fa6";
 import { RiMastercardLine } from "react-icons/ri";
 import { FaApplePay } from "react-icons/fa";
 import { RiVisaLine } from "react-icons/ri";
-// import { CiHeart } from "react-icons/ci";
-// import ProductLoader from "../loaders/ProductLoader";
 import { TbBrandPaypal } from "react-icons/tb";
 import OutsideClickHandler from "react-outside-click-handler";
-// import Footer from "../footer/Footer";
-import { Navigate, useLocation } from "react-router-dom";
-// import { CiShoppingCart } from "react-icons/ci";
 import { RiDeleteBin2Line } from "react-icons/ri";
-// import "../../../styles/detail.css";
 import { FaGooglePay } from "react-icons/fa6";
-// import { RxCross2 } from "react-icons/rx";
 import toast, { Toaster } from "react-hot-toast";
 import FinalpriceLoader from "../loaders/FinalpriceLoader";
-// import { IoIosArrowForward } from "react-icons/io";
-// import ContentZoom from "react-content-zoom";
 import { addtocart, editqty } from "../../features/cart/CartSlice";
 import { useDispatch, useSelector } from "react-redux";
-// import { IoPlayCircleOutline } from "react-icons/io5";
-// import { useNavigate } from "react-router-dom";
-// import Navbar from "../navbar/Navbar2";
 import { FiPlus } from "react-icons/fi";
 import { useRouter } from 'next/router';
-// import { GoPlus } from "react-icons/go";
-
+import {checkExist, FinalPrice} from "../../api_fetch/admin/Cart"
 const Detail = ({ active, setactive, divcart, Setdivcart }) => {
   // const navigate = useNavigate();
   const router = useRouter();
   const [prices, setPrices] = useState([]);
   const location = router.pathname;
   const [productId, SetproductId] = useState("");
-  const [videoplay, Setvideoplay] = useState(true);
-  const [active1, setactive1] = useState(true);
 
   const [media, Setmedia] = useState([]);
   const [mediabig, Setmediabig] = useState([]);
-  const [active2, setactive2] = useState(false);
-  const [active3, setactive3] = useState(false);
-  const [color2, setcolor2] = useState(false);
   const [backend, setBackend] = useState({
     name: "",
     images: [],
@@ -100,92 +80,14 @@ const Detail = ({ active, setactive, divcart, Setdivcart }) => {
     qty: 1,
     price: backend.priceperunit,
   });
-  useEffect(() => {
-    // Function to fetch data from the API
-    const fetchData = async () => {
-      try {
-        // Make a GET request to the API endpoint with the provided productId
-        const response = await fetch(
-          `https://mamosh-backend.vercel.app/api/products/getOne/${productId}`
-        );
-
-        // Check if the response is successful (status code 200)
-        if (response.ok) {
-          // Parse the response JSON and update the state variable
-          const data = await response.json();
-          setBackend(data);
-          const d = {
-            name: data.name,
-            img: data.images[0],
-            qty: 1,
-            price: data.priceperunit,
-            priceperunit: data.priceperunit,
-            discountperunit: data.discountperunit,
-            customTexts: data.customTexts,
-          };
-          Setcartdata(d);
-          Setcartdata2(d);
-          Setfinalprice(data.priceperunit);
-          if (data.discountTypeRs) {
-            Setfinalprice(data.priceperunit - data.discountperunit);
-          } else {
-            return;
-          }
-          let tempmedia = [...data.images, ...data.videoPreviewImgs];
-          let tempmediabig = [...data.images, ...data.videos];
-          Setmedia(tempmedia);
-          Setmediabig(tempmediabig);
-        } else {
-          console.error("Error fetching data:", response.statusText);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    // Call the fetchData function when the component mounts
-    fetchData();
-  }, [productId]);
-
   const [selectedVariants, setSelectedVariants] = useState({});
 
-  const items = [
-    {
-      name: "Colossal Checks Cream Shirt",
-      img: "https://cdn.shopify.com/s/files/1/0420/7073/7058/files/4MSS2625-01-M36.jpg?v=1705060547&width=600",
-    },
-    {
-      name: "Whiffy Blue Shirt",
-      img: "https://cdn.shopify.com/s/files/1/0420/7073/7058/files/4MSS2496-01-M14.jpg?v=1704966730&width=800",
-    },
-  ];
-
-  //   const [active, setactive] = useState(false);
-  const [active_offer, setactive_offer] = useState(false);
-  const [active_desc, setactive_desc] = useState(false);
-  const [active_box, setactive_box] = useState(0);
   const [temp, Settemp] = useState(0);
   const [allselected, Setallselected] = useState(false);
-  const [currentIndex, SetcurrentIndex] = useState(0);
   const [diffprice, Setdiffprice] = useState(0);
   const [colorcount, Setcolorcount] = useState(0);
   const [varcount, Setvarcount] = useState(0);
-  const active_box_Change = (i) => {
-    setactive_box(i);
-    SetcurrentIndex(i);
-  };
 
-  const handleVariantChange = (variantTitle, option) => {
-    setSelectedVariants((prevState) => ({
-      ...prevState,
-      [variantTitle]: option,
-    }));
-    let vari = backend.variants[backend.ind].title;
-    if (vari == variantTitle) {
-      Setvarcount(varcount + 1);
-    }
-
-    Settemp(temp + 1);
-  };
 
   function combineObjects(obj1, obj2) {
     return { ...obj1, ...obj2 };
@@ -221,19 +123,6 @@ const Detail = ({ active, setactive, divcart, Setdivcart }) => {
     check_full(selectedVariants);
   }, [temp]);
 
-  // console.log(selectedVariants, "selected")
-  // console.log(cartdata, "cartdata selected")
-  // console.log("temp", temp)
-
-  const trans = {
-    transform: `translateX(calc(-${currentIndex} * ${
-      100 / (backend.images.length + backend.videoPreviewImgs.length)
-    }%))`,
-
-    width: `${
-      100 * (backend.images.length + backend.videoPreviewImgs.length)
-    }%`,
-  };
   let menuRef = useRef();
   useEffect(() => {
     let handler = (e) => {
@@ -256,14 +145,9 @@ const Detail = ({ active, setactive, divcart, Setdivcart }) => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  const isSmallScreen = windowWidth < 768;
-
-  const contentHeight = isSmallScreen ? 500 : 906;
-  const contentWidth = isSmallScreen ? 343.5 : 611.5;
 
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
-  const totalprice = useSelector((state) => state.totalprice);
   const itemcount = useSelector((state) => state.cart.itemcount);
   const fullinfocart = useSelector((state) => state.cart);
   const [totalamount, Settotalamount] = useState(0);
@@ -386,53 +270,6 @@ const Detail = ({ active, setactive, divcart, Setdivcart }) => {
     );
   }
 
-  const addtoCart = (value) => {
-    const vararray = [];
-    vararray.push(selectedVariants);
-    value = {
-      ...value,
-      variants: vararray,
-      price: finalprice + diffprice,
-      productid: productId,
-    };
-
-    console.log(value, "value");
-    console.log(fullinfocart, "full");
-
-    // console.log(cart, "full2")
-    if (backend.color) {
-      if (
-        Object.keys(selectedVariants).length ===
-        backend.variants.length + 1
-      ) {
-        setactive(true);
-        dispatch(
-          addtocart({
-            ...value,
-            price: finalprice + diffprice,
-            productid: productId,
-          })
-        );
-      } else {
-        toast.error("Select all varients");
-        // alert("Select all varients")
-      }
-    } else {
-      if (Object.keys(selectedVariants).length === backend.variants.length) {
-        setactive(true);
-        dispatch(
-          addtocart({
-            ...value,
-            price: finalprice + diffprice,
-            productid: productId,
-          })
-        );
-      } else {
-        toast.error("Select all varients");
-        // alert("Select all varients")
-      }
-    }
-  };
 
   useEffect(() => {
     // Function to fetch data based on the query string
@@ -461,13 +298,6 @@ const Detail = ({ active, setactive, divcart, Setdivcart }) => {
 
   const checkout = () => {
     router.push(`/checkout`);
-  };
-
-  const logout = () => {
-    localStorage.removeItem("persist:root");
-    Setuserlogged(false);
-    window.location.reload();
-    localStorage.removeItem("token");
   };
 
   useEffect(() => {

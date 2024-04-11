@@ -13,6 +13,8 @@ import Profilebtn from "./Profilebtn";
 import { useRouter } from "next/router";
 import { GoPerson } from "react-icons/go";
 import { BiArrowBack } from "react-icons/bi";
+import {getMenu, getSubMenu} from "../../api_fetch/admin/Menu"
+
 const Navbar = () => {
   // const navigate = useNavigate();
   const router = useRouter();
@@ -30,49 +32,46 @@ const Navbar = () => {
 
   useEffect(() => {
     let func = async () => {
-      let res = await fetch("https://mamosh-backend.vercel.app/api/menu");
-      console.log(res);
-      let data = await res.json();
-      console.log(data, "data");
-      let { error } = data;
-      if (error || !res.ok) {
-        alert(error || "Some error occurred");
-        return;
-      }
-      console.log(data);
-      setCategories(data.reverse());
-      Settemp(true);
-    };
+        let data = await getMenu()
+        
+        console.log(data,"data")
+        // let { error } = data;
+        // if (error || !data.ok) {
+        //     alert(error || "Some error occurred");
+        //     return;
+        // }
+        setCategories(data.reverse());
+        Settemp(true)
+    }
     func();
-  }, []);
+}, [])
 
   // console.log(temp)
 
   const handleClick = async (index) => {
     setCome(false);
-    console.log(categories, "");
+    console.log(categories, "")
     // return;
-    let res = await fetch(
-      `https://mamosh-backend.vercel.app/api/submenu/${categories[index]._id}`
-    );
-    console.log(res);
-    let data = await res.json();
-    let { error } = data;
-    if (error || !res.ok) {
-      alert(error || "Some error occurred");
-      return;
-    }
+    let data = await getSubMenu(categories[index]._id)
+    console.log(data);
+    // let data = await res.json();
+    // let { error } = data;
+    // if (error || !res.ok) {
+    //     alert(error || "Some error occurred");
+    //     return;
+    // }
     console.log(data);
     setSelectedCategory(index);
     setSubCategories(data.reverse());
     setTimeout(() => {
-      if (data.length > 0) {
-        setSubCome(true);
-      } else {
-        router.push(`/collections/?menu=${categories[index].name}`);
-      }
+        if (data.length > 0) {
+            setSubCome(true);
+        }
+        else {
+            router.push(`/collections/?menu=${categories[index].name}`);
+        }
     }, 300 + 100 * (categories.length - 1));
-  };
+}
 
   const handleSubCatClick = (subCatName, index) => {
     router.push(
