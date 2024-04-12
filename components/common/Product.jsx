@@ -14,6 +14,9 @@ import { IoPlayCircleOutline } from "react-icons/io5";
 import { useRouter } from 'next/router';
 import Navbar from "./Navbar2"
 import Cart from "./cart"
+import {checkExist, FinalPrice} from "../../api_fetch/admin/Cart"
+import {editProduct} from "../../api_fetch/admin/Product"
+
 
 const Detail = () => {
   const router = useRouter();
@@ -87,14 +90,17 @@ const Detail = () => {
     const fetchData = async () => {
       try {
         // Make a GET request to the API endpoint with the provided productId
-        const response = await fetch(
-          `https://mamosh-backend.vercel.app/api/products/getOne/${productId}`
-        );
+        // const response = await fetch(
+        //   `https://mamosh-backend.vercel.app/api/products/getOne/${productId}`
+        // );
+
+        const data = await editProduct(productId)
+        console.log(data,"daaaaaaaa")
 
         // Check if the response is successful (status code 200)
-        if (response.ok) {
+        if (data) {
           // Parse the response JSON and update the state variable
-          const data = await response.json();
+          // const data = await response.json();
           setBackend(data);
           const d = {
             name: data.name,
@@ -118,7 +124,7 @@ const Detail = () => {
           Setmedia(tempmedia);
           Setmediabig(tempmediabig);
         } else {
-          console.error("Error fetching data:", response.statusText);
+          console.error("Error fetching data:", data.statusText);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -191,7 +197,7 @@ const Detail = () => {
         Setallselected(true);
 
         const resultIndex = linearSearch(backend.variantsData, select);
-        Setdiffprice(backend.variantsDetails[resultIndex].priceDifference || 0);
+          Setdiffprice(backend.variantsDetails[resultIndex].priceDifference || 0);
       }
     }
   };
@@ -200,7 +206,9 @@ const Detail = () => {
     const combinedObject = combineObjects(selectedVariants, cartdata2);
     // console.log("combine runs", selectedVariants, "cartdata", cartdata2)
     Setcartdata(combinedObject);
-    check_full(selectedVariants);
+    if(Object.keys(selectedVariants).length != 0){
+      check_full(selectedVariants);
+    }
   }, [temp]);
 
   // console.log(selectedVariants, "selected")
@@ -238,15 +246,9 @@ const Detail = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  const isSmallScreen = windowWidth < 768;
-
-  const contentHeight = isSmallScreen ? 500 : 906;
-  const contentWidth = isSmallScreen ? 343.5 : 611.5;
 
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
-  const totalprice = useSelector((state) => state.cart.totalprice);
-  const itemcount = useSelector((state) => state.cart.itemcount);
   const fullinfocart = useSelector((state) => state.cart);
   const [totalamount, Settotalamount] = useState(0)
 
@@ -426,39 +428,20 @@ const Detail = () => {
     fetchData();
   }, [router.query]);
 
-  const checkout = () => {
-    navigate(`/checkout`);
-  };
-
-  const logout = () => {
-    localStorage.removeItem("persist:root");
-    Setuserlogged(false);
-    window.location.reload();
-    localStorage.removeItem("token");
-  };
 
   useEffect(() => {
     const fetchPrices = async () => {
       
       const updatedPrices = await Promise.all(
-        
-        cart.map(async (el) => { // Start from index 1
+        cart.map(async (el) => {
+          // Start from index 1
           try {
-            const response = await fetch(
-              `https://mamosh-backend.vercel.app/api/products/getFinalPrice`,
-              {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  productid: el.productid,
-                  variants: el.variants[0], // assuming variants is an array and you want to send the first variant
-                }),
-              }
-            );
-            const data = await response.json();
-            console.log("plplpll",data)
+            const data = await FinalPrice({
+              productid: el.productid,
+              variants: el.variants[0], // assuming variants is an array and you want to send the first variant
+            })
+            // const data = await response.json();
+            console.log("plplpll", data);
             return data; // Assuming you get the price from the response
           } catch (error) {
             console.error("Error fetching price:", error);

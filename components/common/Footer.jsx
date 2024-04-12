@@ -33,7 +33,7 @@ const Footer = ({active2}) => {
           <p className="p-mar">
             Whatsapp: <span>+916366966283</span>
           </p>
-          <p className="p-mar">Instagram: @snitch.co.in</p>
+          <p className="p-mar">Instagram</p>
         </div>
       </div>
       <div className="sign-div">
@@ -74,7 +74,7 @@ const Footer = ({active2}) => {
       </div>
       <div style={{ marginBlock: "5vh" }}>
         <p style={{ textAlign: "center", fontSize: "15px" }}>
-          © 2024 SNITCH | All Rights Reserved
+          © 2024 MAMOSH | All Rights Reserved
         </p>
       </div>
     </div>

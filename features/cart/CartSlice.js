@@ -1,4 +1,5 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
+import {Addtocart} from "../../api_fetch/admin/Cart"
 
 const initialState = {
   itemcount:0,
@@ -102,19 +103,22 @@ const sendData = async (fullinfocart) => {
       const datagone = {token: token, ...fullinfocart}
       console.log("datagone", datagone)
 
-      const response = await fetch(`https://mamosh-backend.vercel.app/api/addcart`, {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json",
-          },
-          body: JSON.stringify(datagone)
-      });
+      // const response = await fetch(`https://mamosh-backend.vercel.app/api/addcart`, {
+      //     method: "POST",
+      //     headers: {
+      //         "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify(datagone)
+      // });
 
-      if (!response.ok) {
-          throw new Error(`Failed to add to cart: ${response.status} - ${response.statusText}`);
+      const responseData = await Addtocart(datagone)
+      console.log(responseData,"naaaaaa")
+
+      if (!responseData) {
+          throw new Error(`Failed to add to cart: ${responseData.status} - ${responseData.statusText}`);
       }
 
-      const responseData = await response.json();
+      // const responseData = await response.json();
       console.log("Cart updated successfully:", responseData.message);
   } catch (error) {
       console.error("Error adding to cart:", error.message);
