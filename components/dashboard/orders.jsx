@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Table from "./table_order"
+import {Getorders} from "../../api_fetch/admin/User"
 const General = () => {
   const [userData, setUserData] = useState({
     firstname: "",
@@ -57,57 +58,27 @@ const General = () => {
 
     return formErrors;
   };
-  const fetchUserData = async () => {
-    try {
-      // Extract JWT token from localStorage
-      const token = localStorage.getItem("token");
-
-      const response = await fetch(
-        `https://mamosh-backend.vercel.app/api/user/getone`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ token }),
-        }
-      );
-
-      if (!response.ok) {
-        console.log("error");
-        throw new Error("Failed to fetch user data");
-      }
-
-      const userData = await response.json();
-      console.log("Data :", userData);
-      setUserData(userData);
-    } catch (error) {
-      console.error("Error fetching user data:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchUserData();
-  }, []);
 
   const [products, setProducts] = useState(null);
   useEffect(() => {
     const func = async () => {
       try {
         const token = localStorage.getItem('token')
-        const response = await fetch(`https://mamosh-backend.vercel.app/api/orders/getorders`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ token}),
-      });
+      //   const response = await fetch(`https://mamosh-backend.vercel.app/api/orders/getorders`, {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify({ token}),
+      // });
 
-        if (!response.ok) {
+      const data = await Getorders(token)
+
+        if (!data) {
           throw new Error("Failed to fetch data");
         }
 
-        const data = await response.json();
+        // const data = await response.json();
         setProducts(data);
         console.log(data, "productjson");
       } catch (error) {

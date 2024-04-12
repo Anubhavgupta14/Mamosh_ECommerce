@@ -7,6 +7,7 @@ import { IoLocationOutline } from "react-icons/io5";
 // import "../../styles/address.css";
 import Profilebtn from "../common/Profilebtn2"
 import Addaddress from "./popupaddress"
+import {Checkaddress} from "../../api_fetch/admin/User"
 
 const General = ({email}) => {
   const [open, Setopen] = useState(false)
@@ -102,23 +103,25 @@ const General = ({email}) => {
       // Extract JWT token from localStorage
       const token = localStorage.getItem("token");
 
-      const response = await fetch(
-        `https://mamosh-backend.vercel.app/api/address/checkaddress`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ token }),
-        }
-      );
+      // const response = await fetch(
+      //   `https://mamosh-backend.vercel.app/api/address/checkaddress`,
+      //   {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify({ token }),
+      //   }
+      // );
 
-      if (!response.ok) {
+      const userDataadd = await Checkaddress(token)
+
+      if (!userDataadd) {
         console.log("error");
         throw new Error("Failed to fetch user data");
       }
 
-      const userDataadd = await response.json();
+      // const userDataadd = await response.json();
 
       Setaddress(userDataadd);
     } catch (error) {

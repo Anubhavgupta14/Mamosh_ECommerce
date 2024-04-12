@@ -6,6 +6,7 @@ import { RxCross2 } from "react-icons/rx";
 import toast, { Toaster } from "react-hot-toast";
 import { LiaCcVisa } from "react-icons/lia";
 import { IoIosArrowBack } from "react-icons/io";
+import {Savecards} from "../../api_fetch/admin/User"
 
 const popupcard = ({ email ,open, Setopen, userData, setUserData, paymentcard, Setpaymentcard }) => {
   const countries = [
@@ -263,19 +264,21 @@ const popupcard = ({ email ,open, Setopen, userData, setUserData, paymentcard, S
 
   const Updatepay = async (userData) => {
     try {
-      const response = await fetch(`https://mamosh-backend.vercel.app/api/user/savecard`, {
-        method: 'POST', // Assuming you're sending data via POST method
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({email, ...userData}),
-      });
+      // const response = await fetch(`https://mamosh-backend.vercel.app/api/user/savecard`, {
+      //   method: 'POST', // Assuming you're sending data via POST method
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify({email, ...userData}),
+      // });
 
-      if (!response.ok) {
+      const data = await Savecards({email, ...userData})
+
+      if (!data) {
         throw new Error('Failed to update user');
       }
 
-      const data = await response.json();
+      // const data = await response.json();
       toast.success(data.message)
 
       // Handle success, e.g., show a success message

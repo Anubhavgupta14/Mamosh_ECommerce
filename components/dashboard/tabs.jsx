@@ -14,6 +14,7 @@ import Notification from "./notification";
 import Address from "./address";
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
+import {Getone, Updateuser} from "../../api_fetch/admin/User"
 
 const AntTabs = styled(Tabs)({
   borderBottom: "1px solid #e8e8e8",
@@ -202,23 +203,25 @@ export default function BasicTabs() {
       // Extract JWT token from localStorage
       const token = localStorage.getItem("token");
 
-      const response = await fetch(
-        `https://mamosh-backend.vercel.app/api/user/getone`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ token }),
-        }
-      );
+      // const response = await fetch(
+      //   `https://mamosh-backend.vercel.app/api/user/getone`,
+      //   {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify({ token }),
+      //   }
+      // );
 
-      if (!response.ok) {
+      const userData = await Getone(token)
+
+      if (!userData) {
         console.log("error");
         throw new Error("Failed to fetch user data");
       }
 
-      const userData = await response.json();
+      // const userData = await response.json();
       console.log("Data :", userData);
       setUserData(userData);
       let s = userData.phoneno.toString();
@@ -249,6 +252,8 @@ export default function BasicTabs() {
             body: JSON.stringify(userData),
           }
         );
+
+        // const data = await Updateuser(userData)
 
         if (!response.ok) {
           throw new Error("Failed to update user");

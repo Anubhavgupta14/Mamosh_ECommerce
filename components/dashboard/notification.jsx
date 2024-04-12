@@ -3,63 +3,6 @@ import { useState, useEffect } from "react";
 import { useRouter } from 'next/router';
 
 const General = () => {
-  // const [userData, setUserData] = useState({
-  //   firstname: "",
-  //   lastname: "",
-  //   email: "",
-  //   phoneno: "",
-  //   dob: "",
-  //   gender: "",
-  //   country: "",
-  // });
-  
-
-  const fetchUserData = async () => {
-    try {
-      // Extract JWT token from localStorage
-      const token = localStorage.getItem("token");
-
-      const response = await fetch(
-        `https://mamosh-backend.vercel.app/api/user/getone`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ token }),
-        }
-      );
-
-      if (!response.ok) {
-        console.log("error");
-        throw new Error("Failed to fetch user data");
-      }
-
-      const userData = await response.json();
-      console.log("Data :", userData);
-      setUserData(userData);
-    } catch (error) {
-      console.error("Error fetching user data:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchUserData();
-  }, []);
-
-  const router = useRouter();
-  // let productsjson = useLoaderData();
-  const [userData, setUserData] = useState({
-    currentpass: "",
-    newpass: "",
-    renewpass: "",
-  });
-
-  const handleData = (e) => {
-    let name = e.target.name;
-    let value = e.target.value;
-    setUserData({ ...userData, [name]: value });
-  };
 
   return (
     <div className="noti-main-div">

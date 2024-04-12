@@ -13,6 +13,7 @@ import { FaPlus } from "react-icons/fa6";
 import Addpay from "./popupcard"
 import Profilebtn from "../common/Profilebtn2"
 import { IoIosArrowDown } from "react-icons/io";
+import {Getcards} from "../../api_fetch/admin/User"
 
 const Layout = ({ email }) => {
   // const navigate = useNavigate();
@@ -52,6 +53,8 @@ const Layout = ({ email }) => {
           body: JSON.stringify({ userId:email }),
         }
       );
+
+      const data = await Getcards({ userId:email })
 
       if (!response.ok) {
         console.log("error");

@@ -2,54 +2,10 @@
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/router';
 import toast, { Toaster } from "react-hot-toast";
+import {Changepassword} from "../../api_fetch/admin/User"
 
 const General = ({email}) => {
-  // const [userData, setUserData] = useState({
-  //   firstname: "",
-  //   lastname: "",
-  //   email: "",
-  //   phoneno: "",
-  //   dob: "",
-  //   gender: "",
-  //   country: "",
-  // });
-  const router = useRouter();
-  
 
-  const fetchUserData = async () => {
-    try {
-      // Extract JWT token from localStorage
-      const token = localStorage.getItem("token");
-
-      const response = await fetch(
-        `https://mamosh-backend.vercel.app/api/user/getone`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ token }),
-        }
-      );
-
-      if (!response.ok) {
-        console.log("error");
-        throw new Error("Failed to fetch user data");
-      }
-
-      const userData = await response.json();
-      console.log("Data :", userData);
-      setUserData(userData);
-    } catch (error) {
-      console.error("Error fetching user data:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchUserData();
-  }, []);
-
-  // const navigate = useNavigate();
   const [load, setLoad] = useState(false);
   // let productsjson = useLoaderData();
 
@@ -69,22 +25,23 @@ const General = ({email}) => {
   const handleChangePassword = async () => {
     try {
       setLoad(true);
-      const response = await fetch(
-        `https://mamosh-backend.vercel.app/api/user/changepassword`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email, ...userData }),
-        }
-      );
+      // const response = await fetch(
+      //   `https://mamosh-backend.vercel.app/api/user/changepassword`,
+      //   {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify({ email, ...userData }),
+      //   }
+      // );
 
-      if (response.ok) {
+      const data = await Changepassword({ email, ...userData })
+
+      if (data) {
         toast.success("Password changed successfully");
         setUserData({ currentpass: "", newpass: "", renewpass: "" });
       } else {
-        const data = await response.json();
         toast.error(data.message || "Failed to change password");
       }
       setLoad(false);

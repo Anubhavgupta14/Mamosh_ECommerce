@@ -1,31 +1,19 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-
 import { useState, useEffect } from "react";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-// import { PiAddressBookLight } from "react-icons/pi";
 import ListItemIcon from "@mui/material/ListItemIcon";
-// import Divider from "@mui/material/Divider";
-// import { BiPurchaseTagAlt } from "react-icons/bi";
 import { PiAddressBook } from "react-icons/pi";
 import { MdOutlinePayment } from "react-icons/md";
 import IconButton from "@mui/material/IconButton";
-// import { FaRegAddressCard } from "react-icons/fa6";
-// import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
 import { GoPerson } from "react-icons/go";
 import { BsBagCheck } from "react-icons/bs";
-// import { RiUserSettingsLine } from "react-icons/ri";
-// import { CiDollar } from "react-icons/ci";
-// import { MdOutlinePayments } from "react-icons/md";
-// import { CgProfile } from "react-icons/cg";
-import { useNavigate } from "react-router-dom";
-// import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
-// import { MdLiveTv } from "react-icons/md";
 import { useRouter } from 'next/router';
+import {Getone} from "../../api_fetch/admin/User"
 
 export default function AccountMenu() {
   const router = useRouter();
@@ -43,23 +31,25 @@ export default function AccountMenu() {
       // Extract JWT token from localStorage
       const token = localStorage.getItem("token");
 
-      const response = await fetch(
-        `https://mamosh-backend.vercel.app/api/user/getone`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ token }),
-        }
-      );
+      // const response = await fetch(
+      //   `https://mamosh-backend.vercel.app/api/user/getone`,
+      //   {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify({ token }),
+      //   }
+      // );
 
-      if (!response.ok) {
+      const userData = await Getone(token)
+
+      if (!userData) {
         console.log("error");
         throw new Error("Failed to fetch user data");
       }
 
-      const userData = await response.json();
+      // const userData = await response.json();
       console.log("Data :", userData);
       setUserData(userData);
     } catch (error) {

@@ -5,6 +5,8 @@ import CheckoutLoader from "../loaders/CheckoutLoader";
 import { MdOutlineErrorOutline } from "react-icons/md";
 import FinalpriceLoader2 from "../loaders/FinalpriceLoader2";
 import { useRouter } from 'next/router';
+import {Checkoutitem,Saveorders, CheckAddress,Getcart} from "../../api_fetch/admin/Checkout"
+import {FinalPrice} from "../../api_fetch/admin/Cart"
 
 const Checkout = () => {
 
@@ -102,15 +104,17 @@ const Checkout = () => {
   };
   const saveorder = async()=>{
     try{
-      const response = await fetch(`https://mamosh-backend.vercel.app/api/orders/saveorders`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ userId:cart.userId, orders: cartdata.cart}),
-      });
+      // const response = await fetch(`https://mamosh-backend.vercel.app/api/orders/saveorders`, {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify({ userId:cart.userId, orders: cartdata.cart}),
+      // });
 
-      const responseData = await response.json();
+      const responseData = await Saveorders({ userId:cart.userId, orders: cartdata.cart})
+
+      // const responseData = await response.json();
       console.log(responseData) 
     }
     catch(err){
@@ -119,15 +123,16 @@ const Checkout = () => {
   }
   const saveordernologin = async()=>{
     try{
-      const response = await fetch(`https://mamosh-backend.vercel.app/api/orders/saveordersnologin`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ userId:inputs[0].input, orders: cartdata.cart}),
-      });
+      // const response = await fetch(`https://mamosh-backend.vercel.app/api/orders/saveordersnologin`, {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify({ userId:inputs[0].input, orders: cartdata.cart}),
+      // });
 
-      const responseData = await response.json();
+      const responseData = await Saveorders({ userId:inputs[0].input, orders: cartdata.cart})
+      // const responseData = await response.json();
       console.log(responseData) 
     }
     catch(err){
@@ -141,15 +146,17 @@ const Checkout = () => {
     const token = localStorage.getItem('token');
     if(token){
     try{
-      const response = await fetch(`https://mamosh-backend.vercel.app/api/addcart/checkout`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ token }),
-      });
+      // const response = await fetch(`https://mamosh-backend.vercel.app/api/addcart/checkout`, {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify({ token }),
+      // });
 
-      const responseData = await response.json();
+      const responseData = await Checkoutitem(token)
+
+      // const responseData = await response.json();
       console.log(responseData)
     }
     catch(err){
@@ -337,18 +344,19 @@ const Checkout = () => {
           return;
         }
         setUser(true);
-         const response = await fetch(
-          `https://mamosh-backend.vercel.app/api/addcart/getcart`,
-           {
-             method: "POST",
-             headers: {
-               "Content-Type": "application/json",
-             },
-             body: JSON.stringify({ token: token }),
-           }
-         );
-         if (response.ok) {
-           const data = await response.json();
+        //  const response = await fetch(
+        //   `https://mamosh-backend.vercel.app/api/addcart/getcart`,
+        //    {
+        //      method: "POST",
+        //      headers: {
+        //        "Content-Type": "application/json",
+        //      },
+        //      body: JSON.stringify({ token: token }),
+        //    }
+        //  );
+         const data = await Getcart(token)
+         if (data) {
+          //  const data = await response.json();
            Setuserid(data.userId);
            console.log(cart);
          }
@@ -365,18 +373,20 @@ const Checkout = () => {
         return;
       }
 
-      const response = await fetch(
-        `https://mamosh-backend.vercel.app/api/address/checkaddress`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ token: token }),
-        }
-      );
-      if (response.ok) {
-        const data = await response.json();
+      // const response = await fetch(
+      //   `https://mamosh-backend.vercel.app/api/address/checkaddress`,
+      //   {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify({ token: token }),
+      //   }
+      // );
+
+      const data = await CheckAddress(token)
+      if (data) {
+        // const data = await response.json();
         console.log(data, "lll");
         Setaddressdata(data);
       } else {
@@ -393,31 +403,22 @@ const Checkout = () => {
     const fetchPrices = async () => {
       if (cart) {
         const updatedPrices = await Promise.all(
-          cart.cart.map(async (el) => {
-            // Start from index 1
-            try {
-              const response = await fetch(
-                `https://mamosh-backend.vercel.app/api/products/getFinalPrice`,
-                {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({
-                    productid: el.productid,
-                    variants: el.variants[0], // assuming variants is an array and you want to send the first variant
-                  }),
-                }
-              );
-              const data = await response.json();
-              console.log("plplpll", data);
-              return data; // Assuming you get the price from the response
-            } catch (error) {
-              console.error("Error fetching price:", error);
-              return null;
-            }
-          })
-        );
+        cart.cart.map(async (el) => {
+          // Start from index 1
+          try {
+            const data = await FinalPrice({
+              productid: el.productid,
+              variants: el.variants[0], // assuming variants is an array and you want to send the first variant
+            })
+            // const data = await response.json();
+            console.log("plplpll", data);
+            return data; // Assuming you get the price from the response
+          } catch (error) {
+            console.error("Error fetching price:", error);
+            return null;
+          }
+        })
+      );
         setPrices(updatedPrices);
         let sum = 0;
       for (let i = 0; i < updatedPrices.length; i++) {
