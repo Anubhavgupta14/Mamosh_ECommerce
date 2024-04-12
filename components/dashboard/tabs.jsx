@@ -242,29 +242,32 @@ export default function BasicTabs() {
     } else {
       try {
         setLoad(true);
-        const response = await fetch(
-          `https://mamosh-backend.vercel.app/api/user/updateuser`,
-          {
-            method: "POST", // Assuming you're sending data via POST method
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(userData),
-          }
-        );
+        // const response = await fetch(
+        //   `https://mamosh-backend.vercel.app/api/user/updateuser`,
+        //   {
+        //     method: "POST", // Assuming you're sending data via POST method
+        //     headers: {
+        //       "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify(userData),
+        //   }
+        // );
 
-        // const data = await Updateuser(userData)
+        const data = await Updateuser(userData)
 
-        if (!response.ok) {
+        if (!data) {
           throw new Error("Failed to update user");
         }
 
-        const data = await response.json();
+        // const data = await response.json();
         toast.success(data.message);
+        Setdis(false)
+        Settextbtn("Edit")
 
         setLoad(false);
         // Handle success, e.g., show a success message
       } catch (error) {
+        console.log(userData, "userData from tab")
         console.error("Error updating user:", error.message);
         toast.error(error.message);
         // Handle error, e.g., show an error message
@@ -308,7 +311,7 @@ export default function BasicTabs() {
               <div style={{ width: "50%" }}>
                 <div
                   className="fr-cancel"
-                  onClick={Updatefun}
+                  onClick={()=>{Updatefun(userData)}}
                   style={{ position: "relative", left: "85%" }}
                 >
                   {textbtn}
