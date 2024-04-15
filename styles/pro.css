@@ -1,0 +1,217 @@
+.pro_main{
+    display: flex;
+    max-width: 84.375vw;
+    margin: 0 auto;
+    padding-bottom: 12.5vw;
+    justify-content: space-between;
+    /* border: 1px solid; */
+    margin-top: 80px !important;
+}
+.pro_img{
+    width: 30.625vw;
+    margin-left: 26.875vw;
+    /* border: 1px solid; */
+}
+.pro_content{
+    width: 26.875vw;
+    padding-left: 4.27083vw;
+    /* border: 1px solid; */
+}
+.pro_img_seperate{
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+.pro_inside_content{
+    position: sticky;
+    top: 3.54167vw;
+    padding-top: 7.8125vw;
+}
+.pro_p_one{
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 500;
+  line-height: 1.3125em;
+    letter-spacing: .1em;
+}
+.pro_p_main{
+    font-weight: 400;
+    font-size: 1.5625vw;
+    line-height: 1.2em;
+    letter-spacing: 0em;
+    text-transform: none;
+    
+}
+.pro_p_price{
+    padding-top: .3em;
+    color: #757575;
+    letter-spacing: .1em;
+    font-size: 12px; 
+
+}
+.pro_variants{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+
+.single_variant{
+ width: calc(50% - 10px);
+ text-align: right;
+ position: relative;
+}
+.size_chart_pro{
+    position: absolute;
+    border: 1px solid rgba(0,0,0,0.1);
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+}
+.single_size{   
+    border: 1px solid rgba(0,0,0,0.1);
+    width: 25%;
+    height: 2.5vw;
+    position: relative;
+    padding-left: 0;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.single_size:hover{
+    background-color: rgba(0,0,0,0.05);
+}
+
+.pro_vari_detail{
+    font-size: 10px;
+    color: #00000080;
+    text-transform: uppercase;
+    padding: 8px 0;
+    line-height: 1em;
+    height: 21px;
+    letter-spacing: .083em;
+    background: none;
+    -webkit-appearance: none;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.single_box{
+ display: flex;
+ align-items: center;
+ padding: 10px;
+ border: 1px solid rgba(0,0,0,0.2);
+ position: relative;
+ width: 100%;
+ height: 36px;
+ display: flex;
+ align-items: center;
+ padding: .3em 10px 0;
+ text-align: left;
+ cursor: pointer;
+ transition: color .4s ease;
+ justify-content: space-between;
+}
+.single_box:hover{
+    border:1px solid;
+    transition: color .4s ease;
+   
+}
+.single_box p{
+    font-size: 12px;
+}
+.pro_btn_addtocart{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    background-color: #afafaf;
+    border: 0;
+    color: #fff;
+    line-height: 1.5em;
+    letter-spacing: .15em;
+    font-weight: 500;
+    font-size: 10px;
+    height: 48px;
+    text-transform: uppercase;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: .3em;
+    cursor: pointer;
+}
+.pro_item_detail{
+    margin-top: 20px;
+    font-size: 12px;
+}
+.pro_trans{
+    transition: max-height .2s cubic-bezier(.075,.82,.165,1), padding .2s cubic-bezier(.075,.82,.165,1);
+    max-height: 0;
+    height: auto;
+    overflow: hidden;
+}
+.pro_others{
+    margin-top: 50px;
+    font-size: 11px;
+    line-height: 1.5em;
+    letter-spacing: .15em;
+    font-weight: 500;
+}
+.pro_others p{
+    text-transform: uppercase;
+    padding-top: .3em;
+    font-weight: 500;
+}
+.pro_detail_div{
+    margin-top: 10px;
+}
+.pro_single_other{
+    margin-top: 10px;
+}
+.pro_social{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+}
+.pro_you_may{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+}
+.head_pro_you{
+    font-size: 12px;
+    margin-bottom: 10px;
+    margin-inline: 2vw;
+}
+.pro_you_may_div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: calc(100% - 3.64583vw);
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+.you_img_div{
+    width: 23%;
+    cursor: pointer;
+}
+.pro_img_you_may{
+    width: 100%;
+    object-fit: cover !important;
+}
+.you_img_div p{
+    font-size: 12px;
+
+}

@@ -44,6 +44,7 @@ import "../styles/admin/setting/settings.css"
 import "../styles/admin/admin.css"
 import "../styles/global.css";
 import "../styles/invoice/invoice.css"
+import "../styles/pro.css"
 
 
 
