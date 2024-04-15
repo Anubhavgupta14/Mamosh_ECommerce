@@ -1,10 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
-// import "../../../styles/navbar/navbar.css"
 import { AiOutlineDown, AiOutlineClose } from 'react-icons/ai'
-// import { useNavigate } from 'react-router-dom';
 import HomeLoader from "../loaders/HomeLoader"
-// import "../../../styles/homeloader.css"
-import OutsideClickHandler from "react-outside-click-handler";
 import Cart from "./cart"
 import { useDispatch, useSelector } from "react-redux";
 import { BsHandbag } from "react-icons/bs";
@@ -14,51 +10,58 @@ import { useRouter } from 'next/router';
 import { BiArrowBack } from 'react-icons/bi';
 import { GoPerson } from "react-icons/go";
 import {getMenu, getSubMenu} from "../../api_fetch/admin/Menu"
+import {fetchuser} from "../../features/user/UserSlice"
+import {fetchMenuAsync} from "../../features/menu/MenuSlice"
 const Navbar = () => {
     const router = useRouter();
-    const [products, setProducts] = useState(null)
     const itemcount = useSelector((state) => state.cart.itemcount);
+    const dispatch = useDispatch();
+    dispatch(fetchuser())
+    const user = useSelector((state)=> state.user.user)
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [come, setCome] = useState(true);
     const [active2, setActive2] = useState(!true);
     const [active, setactive] = useState(false);
     const [divcart, Setdivcart] = useState(false)
-    const [temp, Settemp] = useState(false)
-    // const [cats, setCats] = useState(categories)
-    const [categories, setCategories] = useState([])
+    // const [temp, Settemp] = useState(false)
+    // const [categories, setCategories] = useState([])
     const [subCategories, setSubCategories] = useState([])
+    const [subcome, setSubCome] = useState(true);
+    // const [user, Setuser] = useState(false)
+    const categories = useSelector((state)=>state.menu.categories)
+    const temp = useSelector((state)=>state.menu.temp)
 
-    useEffect(() => {
-        let func = async () => {
-            let data = await getMenu()
-            
-            console.log(data,"data")
-            // let { error } = data;
-            // if (error || !data.ok) {
-            //     alert(error || "Some error occurred");
-            //     return;
-            // }
-            setCategories(data.reverse());
-            Settemp(true)
+    const checkuser =()=>{
+        const token = localStorage.getItem("token");
+        if(token){
+            Setuser(true)
         }
-        func();
-    }, [])
+    }
 
-    // console.log(temp)
+    const handleClickOutside = (e) => {
+        if (menuRef.current && !menuRef.current.contains(e.target)) {
+            setMenugo(true);
+            setTimeout(() => {
+                setActive2(true);
+            }, 300);
+        }
+      };
+    
+    useEffect(()=>{
+        dispatch(fetchMenuAsync())
+        document.addEventListener("mousedown", handleClickOutside);
+          return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+          };
+    },[dispatch])
 
+    
 
     const handleClick = async (index) => {
         setCome(false);
         console.log(categories, "")
-        // return;
         let data = await getSubMenu(categories[index]._id)
         console.log(data);
-        // let data = await res.json();
-        // let { error } = data;
-        // if (error || !res.ok) {
-        //     alert(error || "Some error occurred");
-        //     return;
-        // }
         console.log(data);
         setSelectedCategory(index);
         setSubCategories(data.reverse());
@@ -77,22 +80,6 @@ const Navbar = () => {
     }
 
     let menuRef = useRef(null);
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-        if (menuRef.current && !menuRef.current.contains(e.target)) {
-            setMenugo(true);
-            setTimeout(() => {
-                setActive2(true);
-            }, 300);
-        }
-      };
-  
-      document.addEventListener("mousedown", handleClickOutside);
-  
-      return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-  });
 
     const [menugo, setMenugo] = useState(false);
     let closemenu = () => {
@@ -102,55 +89,15 @@ const Navbar = () => {
 
         }, 300);
     }
-    const [subcome, setSubCome] = useState(true);
-    let goback = () => {
-        // setCats(categories)
-        setSubCome(!true)
 
+    let goback = () => {
+        setSubCome(!true)
         setTimeout(() => {
             setSelectedCategory(null)
             setSubCategories(null)
             setCome(true)
-        }, 300);
-        // setCome(true);
-        // setActive(true);
-        // setMenugo(false)
+        }, 300)
     }
-
-    let contact = async () => {
-        try {
-            const response = await fetch('https://api.openai.com/v1/chat/completions', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer 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', // Replace with your OpenAI API key
-                },
-                body: JSON.stringify({
-                    prompt: "GIve me the details of Taj mahal",
-                    max_tokens: 350,
-                    model: "gpt-3.5-turbo"
-                }),
-            });
-
-            const data = await response.json();
-            console.log(data);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    };
-
-    const [user, Setuser] = useState(false)
-
-    const checkuser =()=>{
-        const token = localStorage.getItem("token");
-        if(token){
-            Setuser(true)
-        }
-    }
-    useEffect(()=>{
-        checkuser();
-    },[])
-
     return (
         <>
             <div className="nav-wrap">
@@ -159,7 +106,7 @@ const Navbar = () => {
                     <div className='menu'>
                         <div className="menu-items flex-all" onClick={() => { setActive2(true); setMenugo(false) }}>Shop <span className='flex-all'><AiOutlineDown /></span></div>
                         <div className="menu-items flex-all">Discover <span className='flex-all'><AiOutlineDown /></span></div>
-                        <div className="menu-items flex-all" onClick={contact}>Contact</div>
+                        <div className="menu-items flex-all" >Contact</div>
                     </div>
 
                     <div className="navbar-logo" onClick={()=>{router.push("/")}}>Mamosh</div>
