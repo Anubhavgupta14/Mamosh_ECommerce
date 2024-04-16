@@ -1,8 +1,9 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "../common/Navbar2";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { MdKeyboardArrowUp } from "react-icons/md";
+import Caursel from "./Caursel"
 const Product = () => {
   let images = [
     {
@@ -68,15 +69,57 @@ const Product = () => {
   const [toggle_share, Settoggle_share] = useState(false);
   const [opensize, Setopensize] = useState(false)
 
+  const [isMobileMode, setIsMobileMode] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            // Check window width to determine mobile mode
+            setIsMobileMode(window.innerWidth <= 768); // Adjust the breakpoint as needed
+        };
+
+        // Initial check
+        handleResize();
+
+        const handleScroll = () => {
+          // Check scroll position to determine if scrolled
+          const scrollPosition = window.scrollY;
+
+          // Set isScrolled to true if scroll position is greater than or equal to 100 pixels
+          setIsScrolled(scrollPosition >= 450); // Adjust the scroll position as needed
+      };
+
+      // Initial check
+      handleScroll();
+
+      // Event listener for scroll
+      window.addEventListener('scroll', handleScroll);
+
+
+        // Event listener for window resize
+        window.addEventListener('resize', handleResize);
+
+        // Cleanup
+        return () => {
+            window.removeEventListener('resize', handleResize);
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
   return (
     <>
       <Navbar />
       <div className="pro_main">
+        {!isMobileMode ? 
         <div className="pro_img">
           {images.map((el, i) => (
             <img src={el.img} className="pro_img_seperate" />
           ))}
         </div>
+        :
+        <Caursel/>
+        }
+
 
 
         <div className="pro_content">
@@ -86,6 +129,8 @@ const Product = () => {
               <p className="pro_p_main">Womens Halfzip Mockneck</p>
               <p className="pro_p_price">Rs. 11,100</p>
 
+              {!isMobileMode && 
+              <>
               <div className="pro_variants">
                 <div className="single_variant">
                   <div className="single_box">
@@ -113,11 +158,11 @@ const Product = () => {
                 </div>
               </div>
 
-                
-
               <div className="pro_btn_addtocart">
                 <p>Add to Cart</p>
               </div>
+              </>
+              }
 
               <p className="pro_item_detail">
                 The Women's Essentials halfzip mockneck is made in reverse
@@ -205,6 +250,80 @@ const Product = () => {
                 )}
               </div>
             </div>
+
+            {isScrolled && 
+              <>
+              <div className="pro_variants">
+                <div className="single_variant">
+                  <div className="single_box">
+                    <p>Vintage White</p>
+                  </div>
+                  <p className="pro_vari_detail">MORE COLORS</p>
+                </div>
+
+                <div className="single_variant">
+                  <div className="single_box" onClick={()=>{Setopensize(!opensize)}}>
+                    <p>Select Size</p>
+                    {!opensize ? <MdKeyboardArrowDown/> : <MdKeyboardArrowUp/>}
+                  </div>
+                  <p className="pro_vari_detail">Size Chart</p>
+                  {opensize && 
+                  <div className="size_chart_pro">
+                    {sizes.map((el,i)=>(
+                        <div className="single_size">
+                         <p>{el.size}</p>
+                        </div>
+                    ))}
+                </div>
+                }
+                  
+                </div>
+              </div>
+
+              <div className="pro_btn_addtocart">
+                <p>Add to Cart</p>
+              </div>
+              </>
+              }
+
+            {isMobileMode &&  
+              <div className="res-div-op">
+                {!isScrolled && 
+                <>
+              <div className="pro_variants">
+                <div className="single_variant">
+                  <div className="single_box">
+                    <p>Vintage White</p>
+                  </div>
+                  <p className="pro_vari_detail">MORE COLORS</p>
+                </div>
+
+                <div className="single_variant">
+                  <div className="single_box" onClick={()=>{Setopensize(!opensize)}}>
+                    <p>Select Size</p>
+                    {!opensize ? <MdKeyboardArrowDown/> : <MdKeyboardArrowUp/>}
+                  </div>
+                  <p className="pro_vari_detail">Size Chart</p>
+                  {opensize && 
+                  <div className="size_chart_pro">
+                    {sizes.map((el,i)=>(
+                        <div className="single_size">
+                         <p>{el.size}</p>
+                        </div>
+                    ))}
+                </div>
+                }
+                  
+                </div>
+              </div>
+
+              <div className="pro_btn_addtocart">
+                <p>Add to Cart</p>
+              </div>
+              </>
+              }
+              </div>
+              }
           </div>
         </div>
       </div>

@@ -215,3 +215,32 @@
     font-size: 12px;
 
 }
+.cau-img{
+    max-width: 100%;
+}
+.main-cau{
+    margin-top: 20px;
+}
+
+.res-div-op{
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    background-color: white;
+    margin: 0;
+    left: 0;
+    padding: 10px;
+}
+@media screen and (max-width:768px){
+    .pro_main{
+        flex-direction: column;
+    }
+    .pro_content{
+        width: 84.375vw;
+        padding-left: 0;
+    }
+    .pro_p_main{
+        font-size: 16px;
+    }
+    
+}

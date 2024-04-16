@@ -12,6 +12,7 @@ import { GoPerson } from "react-icons/go";
 import {getMenu, getSubMenu} from "../../api_fetch/admin/Menu"
 import {fetchuser} from "../../features/user/UserSlice"
 import {fetchMenuAsync} from "../../features/menu/MenuSlice"
+import { RxHamburgerMenu } from "react-icons/rx";
 const Navbar = () => {
     const router = useRouter();
     const itemcount = useSelector((state) => state.cart.itemcount);
@@ -30,6 +31,8 @@ const Navbar = () => {
     // const [user, Setuser] = useState(false)
     const categories = useSelector((state)=>state.menu.categories)
     const temp = useSelector((state)=>state.menu.temp)
+    const [isMobileMode, setIsMobileMode] = useState(false);
+    const [opennav, Setopennav] = useState(false)
 
     const checkuser =()=>{
         const token = localStorage.getItem("token");
@@ -50,9 +53,24 @@ const Navbar = () => {
     useEffect(()=>{
         dispatch(fetchMenuAsync())
         document.addEventListener("mousedown", handleClickOutside);
+
+        const handleResize = () => {
+            // Check window width to determine mobile mode
+            setIsMobileMode(window.innerWidth <= 768); // Adjust the breakpoint as needed
+        };
+
+        // Initial check
+        handleResize();
+
+        // Event listener for window resize
+        window.addEventListener('resize', handleResize);
+
           return () => {
             document.removeEventListener("mousedown", handleClickOutside);
+            window.removeEventListener('resize', handleResize);
           };
+
+          
     },[dispatch])
 
     
@@ -102,18 +120,26 @@ const Navbar = () => {
         <>
             <div className="nav-wrap">
             <div className="navbar-top flex-all"><div className="nav-top-text">Get 20% discount on your first order!</div></div>
-                <div className="navbar">
+                <div className="navbar_comp">
+                    {!isMobileMode && 
                     <div className='menu'>
                         <div className="menu-items flex-all" onClick={() => { setActive2(true); setMenugo(false) }}>Shop <span className='flex-all'><AiOutlineDown /></span></div>
                         <div className="menu-items flex-all">Discover <span className='flex-all'><AiOutlineDown /></span></div>
                         <div className="menu-items flex-all" >Contact</div>
                     </div>
+                    }
+                    {isMobileMode && 
+                    <RxHamburgerMenu className='burger' onClick={()=>{Setopennav(!opennav)}}/>
+                    }
 
                     <div className="navbar-logo" onClick={()=>{router.push("/")}}>Mamosh</div>
+                    {/* {!isMobileMode &&  */}
                     <div className="navbar-right">
+                        {!isMobileMode && 
                         <div className="menu-right-logo">
                             <BsSearch />
                         </div>
+                        }
 
                         <div className="menu-right-logo" onClick={()=>{setactive(true); Setdivcart(true)}}>
                             <div className='cart-count'><div>{itemcount}</div></div>
@@ -128,8 +154,25 @@ const Navbar = () => {
                         </div>
 
                     </div>
+                    {/* } */}
+                    
+
                 </div>
             </div>
+
+            {
+                isMobileMode && 
+                <div className={opennav ? "res-nav trans-nav":"res-nav trans-nav-close"}>
+                <div className="menu-close-btn flex-all nav-close" onClick={()=>{Setopennav(false)}}><AiOutlineClose /></div>
+                    <div className='menu'>
+                        <div className="menu-items flex-all" onClick={() => { setActive2(true); setMenugo(false) }}>Shop <span className='flex-all'><AiOutlineDown /></span></div>
+                        <div className="menu-items flex-all">Discover <span className='flex-all'><AiOutlineDown /></span></div>
+                        <div className="menu-items flex-all" >Contact</div>
+                    </div>
+                    
+                </div>
+            }
+
             {active2 &&
                 
                 <div className="menu-overlay3" style={{ background: menugo ? "rgba(0,0,0,0)" : "rgba(0,0,0,0.35)" }}>

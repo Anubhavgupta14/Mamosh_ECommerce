@@ -12,6 +12,7 @@ import { GoPerson } from "react-icons/go";
 import {getMenu, getSubMenu} from "../../api_fetch/admin/Menu"
 import {fetchuser} from "../../features/user/UserSlice"
 import {fetchMenuAsync} from "../../features/menu/MenuSlice"
+import { RxHamburgerMenu } from "react-icons/rx";
 const Navbar = () => {
     const router = useRouter();
     const itemcount = useSelector((state) => state.cart.itemcount);
@@ -30,6 +31,8 @@ const Navbar = () => {
     // const [user, Setuser] = useState(false)
     const categories = useSelector((state)=>state.menu.categories)
     const temp = useSelector((state)=>state.menu.temp)
+    const [isMobileMode, setIsMobileMode] = useState(false);
+    const [opennav, Setopennav] = useState(false)
 
     const checkuser =()=>{
         const token = localStorage.getItem("token");
@@ -44,16 +47,41 @@ const Navbar = () => {
             setTimeout(() => {
                 setActive2(true);
             }, 300);
+          
         }
       };
     
     useEffect(()=>{
         dispatch(fetchMenuAsync())
         document.addEventListener("mousedown", handleClickOutside);
+
+
           return () => {
             document.removeEventListener("mousedown", handleClickOutside);
+          
           };
+
+          
     },[dispatch])
+
+      useEffect(() => {
+        const handleResize = () => {
+            // Check window width to determine mobile mode
+            setIsMobileMode(window.innerWidth <= 768); // Adjust the breakpoint as needed
+        };
+
+        // Initial check
+        handleResize();
+
+        // Event listener for window resize
+        window.addEventListener('resize', handleResize);
+
+        // Cleanup
+        return () => {
+            window.removeEventListener('resize', handleResize);
+          
+        };
+    }, []);
 
     
 
@@ -98,147 +126,111 @@ const Navbar = () => {
             setCome(true)
         }, 300)
     }
-
-  return (
-    <>
-      <div className="nav-wrap">
-        <div className="navbar" style={{ top: "0" }}>
-          <div className="menu">
-            <div
-              className="menu-items flex-all"
-              onClick={() => {
-                setActive2(true);
-                setMenugo(false);
-              }}
-            >
-              Shop{" "}
-              <span className="flex-all">
-                <AiOutlineDown />
-              </span>
-            </div>
-            <div className="menu-items flex-all">
-              Discover{" "}
-              <span className="flex-all">
-                <AiOutlineDown />
-              </span>
-            </div>
-            <div className="menu-items flex-all" >
-              Contact
-            </div>
-          </div>
-
-          <div
-            className="navbar-logo"
-            onClick={() => {
-              router.push("/");
-            }}
-          >
-            Mamosh
-          </div>
-          <div className="navbar-right">
-            <div className="menu-right-logo">
-              <BsSearch />
-            </div>
-
-            <div
-              className="menu-right-logo"
-              onClick={() => {
-                setactive(true);
-                Setdivcart(true);
-              }}
-            >
-              <div className="cart-count"><div>{itemcount}</div></div>
-              <BsHandbag />
-            </div>
-            <div className="menu-right-logo" style={{ margin: "0px" }}>
-              {user ? (
-                <Profilebtn className="okok" />
-              ) : (
-                <GoPerson style={{color:'black', fontSize:'23px'}} onClick={()=>{router.push("/login")}}/>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-      {active2 && (
-        <div
-          className="menu-overlay2"
-          style={{
-            background: menugo ? "rgba(0,0,0,0)" : "rgba(0,0,0,0.35)",
-            pointerEvents: menugo ? "none" : "all",
-          }}
-        >
-          <div
-            ref={menuRef}
-            className={`left-menu ${!menugo ? "menu-anime" : "menu-go"}`}
-          >
-            {!temp ? (
-              <HomeLoader />
-            ) : (
-              <>
-                {subCategories == null || subCategories.length == 0 ? (
-                  <>
-                    <div
-                      className="menu-close-btn flex-all"
-                      onClick={closemenu}
-                    >
-                      <AiOutlineClose />
+    return (
+        <>
+            <div className="nav-wrap">
+                <div className="navbar_comp" style={{top:'0'}}>
+                    {!isMobileMode && 
+                    <div className='menu'>
+                        <div className="menu-items flex-all" onClick={() => { setActive2(true); setMenugo(false) }}>Shop <span className='flex-all'><AiOutlineDown /></span></div>
+                        <div className="menu-items flex-all">Discover <span className='flex-all'><AiOutlineDown /></span></div>
+                        <div className="menu-items flex-all" >Contact</div>
                     </div>
+                    }
+                    {isMobileMode && 
+                    <RxHamburgerMenu className='burger' onClick={()=>{Setopennav(!opennav)}}/>
+                    }
 
-                    {categories.map((cat, index) => {
-                      return (
-                        <div
-                          className={`cats ${come ? "cat-anime" : "cat-go"}`}
-                          style={{ animationDelay: 0.25 + index * 0.1 + "s" }}
-                          onClick={() => {
-                            handleClick(index);
-                          }}
-                        >
-                          <div className="cat-name">{cat.name}</div>
-                          <div className="cat-img">
-                            <img src={cat.imgsrc} alt={cat.name} />
-                          </div>
+                    <div className="navbar-logo" onClick={()=>{router.push("/")}}>Mamosh</div>
+                    {/* {!isMobileMode &&  */}
+                    <div className="navbar-right">
+                        {!isMobileMode && 
+                        <div className="menu-right-logo">
+                            <BsSearch />
                         </div>
-                      );
-                    })}
-                  </>
-                ) : (
-                  <>
-                    <div className="menu-close-btn flex-all" onClick={goback}>
-                      <BiArrowBack />
+                        }
+
+                        <div className="menu-right-logo" onClick={()=>{setactive(true); Setdivcart(true)}}>
+                            <div className='cart-count'><div>{itemcount}</div></div>
+                            <BsHandbag />
+                        </div>
+                        <div className="menu-right-logo" style={{margin:'0px'}}>
+                            {user ?
+                        <Profilebtn className="okok"/>
+                        :
+                        <GoPerson style={{color:'black', fontSize:'23px'}} onClick={()=>{router.push("/login")}}/>
+                        }
+                        </div>
+
                     </div>
+                    {/* } */}
+                    
 
-                    {subCategories.map((cat, index) => {
-                      return (
-                        <div
-                          className={`cats  ${
-                            subcome ? "cat-anime" : "cat-go"
-                          }`}
-                          style={{ animationDelay: index * 0.1 + "s" }}
-                          onClick={() => handleSubCatClick(cat.name, index)}
-                        >
-                          <div className="cat-name">{cat.name}</div>
-                          <div className="cat-img">
-                            <img src={cat.imgsrc} alt={cat.name} />
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </>
-                )}
-              </>
-            )}
-          </div>
-        </div>
-      )}
-      <Cart
-        active={active}
-        setactive={setactive}
-        divcart={divcart}
-        Setdivcart={Setdivcart}
-      />
-    </>
-  );
-};
+                </div>
+            </div>
 
-export default Navbar;
+            {
+                isMobileMode && 
+                <div className={opennav ? "res-nav2 trans-nav":"res-nav trans-nav-close"}>
+                <div className="menu-close-btn flex-all nav-close" onClick={()=>{Setopennav(false)}}><AiOutlineClose /></div>
+                    <div className='menu'>
+                        <div className="menu-items flex-all" onClick={() => { setActive2(true); setMenugo(false) }}>Shop <span className='flex-all'><AiOutlineDown /></span></div>
+                        <div className="menu-items flex-all">Discover <span className='flex-all'><AiOutlineDown /></span></div>
+                        <div className="menu-items flex-all" >Contact</div>
+                    </div>
+                    
+                </div>
+            }
+
+            {active2 &&
+                
+                <div className="menu-overlay2" style={{ background: menugo ? "rgba(0,0,0,0)" : "rgba(0,0,0,0.35)" }}>
+                    <div ref={menuRef} className={`left-menu ${!menugo ? "menu-anime" : "menu-go"}`}>
+                        {!temp ? <HomeLoader/> :
+                        <>
+                        {(subCategories == null || subCategories.length==0) ?
+                            <>
+                                <div className="menu-close-btn flex-all" onClick={closemenu}><AiOutlineClose /></div>
+                                 
+                                
+                                {categories.map((cat, index) => {
+                                    return (
+
+                                        <div className={`cats ${come ? 'cat-anime' : 'cat-go'}`} style={{ animationDelay: 0.25 + index * .1 + 's' }} onClick={() => { handleClick(index) }}>
+                                            <div className="cat-name">{cat.name}</div>
+                                            <div className="cat-img">
+                                                <img src={cat.imgsrc} alt={cat.name} />
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                             
+                            </>
+                            :
+                            <>
+                                <div className="menu-close-btn flex-all" onClick={goback}><BiArrowBack /></div>
+
+                                {
+                                    subCategories.map((cat, index) => {
+                                        return (
+
+                                            <div className={`cats  ${subcome ? 'cat-anime' : 'cat-go'}`} style={{ animationDelay: index * .1 + 's' }} onClick={() => handleSubCatClick(cat.name, index)}>
+                                                <div className="cat-name">{cat.name}</div>
+                                                <div className="cat-img">
+                                                    <img src={cat.imgsrc} alt={cat.name} />
+                                                </div>
+                                            </div>
+                                        )
+                                    })}
+                            </>}
+                        </>
+                        }
+                    </div>
+                </div>
+            }
+            <Cart active={active} setactive={setactive} divcart={divcart} Setdivcart={Setdivcart}/>
+        </>
+    )
+}
+
+export default Navbar
