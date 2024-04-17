@@ -90,11 +90,10 @@ const Navbar = () => {
         console.log(categories, "")
         let data = await getSubMenu(categories[index]._id)
         console.log(data);
-        console.log(data);
         setSelectedCategory(index);
-        setSubCategories(data.reverse());
+        setSubCategories(data.data.reverse());
         setTimeout(() => {
-            if (data.length > 0) {
+            if (data.data.length > 0) {
                 setSubCome(true);
             }
             else {

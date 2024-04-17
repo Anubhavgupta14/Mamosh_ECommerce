@@ -62,12 +62,12 @@ const Collection = () => {
     return (
         <>
         <Navbar/>
-        <div className='main-wrapper top-coll'>
+        {/* <div className='main-wrapper top-coll'> */}
             <Sidenav filters={filters} open={open} setOpen={setOpen}/>
             
             <Main aaya={aaya} data={data} queryParams={queryParams} filtersopen={open} setfiltersOpen={setOpen} />
             
-        </div>
+        {/* </div> */}
         </>
     )
 }

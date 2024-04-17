@@ -2,7 +2,8 @@
     height: 100vh;
     width: 100%;
     padding: 5vh;
-    left: 10vh;
+    position: relative;
+    top: 90px;
 }
 .main-wrapper{
     padding: 5px;
@@ -19,6 +20,8 @@
     width: 270px;
     object-fit: cover; */
     max-width: 100%;
+    height: 550px;
+    object-fit: cover;
 }
 .search-bar{
     width: 100%;
@@ -174,7 +177,7 @@
 }
 
 .store-4{
-    gap: 24px;
+    gap: 4px;
 }
 
 .item{
