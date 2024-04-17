@@ -277,9 +277,15 @@
         width: 23.3vw;
     }
   }
+  
   @media screen and (max-width:1265px){
     .active-3{
         width: 31vw;
+    }
+  }
+  @media screen and (max-width:1085px){
+    .active-4{
+        width: 23vw;
     }
   }
   @media screen and (max-width:1042px){
@@ -287,7 +293,7 @@
         width: 23vw;
     }
   }
-  @media screen and (max-width:908px){
+  @media screen and (max-width:922px){
     .active-4{
         width: 22.5vw;
     }
