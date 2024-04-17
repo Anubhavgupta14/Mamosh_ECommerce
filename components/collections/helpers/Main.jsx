@@ -261,7 +261,9 @@ const Main = ({ data, aaya, queryParams, filtersopen, setfiltersOpen }) => {
                 onMouseEnter={() => handleimgHover(i)}
                 onMouseLeave={handleimgLeave}
                 alt="error"
-                className="img_main_col"
+                className={`img_main_col ${
+                  activeview2 ? "active-2_img" : activeview3 ? "active-3_img" : "active-4_img"
+                }`}
               />
               <p className="item-name">{el.name || ""}</p>
               <p>Rs. {el.priceperunit || 0}</p>

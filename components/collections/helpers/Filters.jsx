@@ -6,7 +6,8 @@ import { FaChevronDown } from "react-icons/fa6";
 const Filters = ({filter,i}) => {
     console.log(filter,"-> filter÷÷")
 
-    const [open,setOpen] = useState((i==0 || i==1) ?true:false);
+    // const [open,setOpen] = useState((i==0 || i==1) ?true:false);
+    const [open,setOpen] = useState(true);
     return (
         <>
             <div className="head" onClick={()=>{setOpen(!open)}}>

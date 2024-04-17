@@ -79,7 +79,7 @@ const Sidenav = ({ filters,open,setOpen }) => {
       <div className="side-bg" >
 
       <OutsideClickHandler onOutsideClick={() => { setOpen(false) }}>
-      <div className="side-wrapper" style={{transform:open?"translateX(0%)":"translateX(-100%)"}}>
+      <div className="side-wrapper" style={{transform:open?"translateX(0%)":"translateX(100%)"}}>
         <div className="side">
           <div className="side-rel">
         <div className="filter-p">Filters</div>
