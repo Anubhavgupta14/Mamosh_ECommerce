@@ -38,7 +38,7 @@
   cursor: pointer;
   color: black;
   font-size: 25px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .menu {
@@ -49,7 +49,7 @@
 
 .menu-items {
   margin: 0 10px;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 17px;
   transition: all .3s ease;
   cursor: pointer;

@@ -266,7 +266,7 @@ const Main = ({ data, aaya, queryParams, filtersopen, setfiltersOpen }) => {
                 }`}
               />
               <p className="item-name">{el.name || ""}</p>
-              <p>Rs. {el.priceperunit || 0}</p>
+              <p className="item-price">Rs. {el.priceperunit || 0}</p>
               {el.discountTypeRs && el.discountperunit && (
                 <p>Flat Rs. {el.discountperunit} Off</p>
               )}
