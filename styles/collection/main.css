@@ -166,8 +166,8 @@
     margin-top: 10vh;
     display: flex;
     flex-wrap: wrap;
-    /* gap: 3vw; */
     width: 100%;
+    justify-content: space-between;
 }
 .store-2{
     gap: 4px;
@@ -263,18 +263,37 @@
     height: 545px;
   }
   .active-3{
-    width: 31vw;
+    width: 31.5vw;
   }
   .active-4{
-    width: 23vw;
+    width: 23.5vw;
   }
   .product-box{
     margin-top: 20px;
   }
-  .active-3 .item-name{
-    font-size: 17px;
-  }
   
-  .active-2 .item-name{
-    font-size: 18px;
+  @media screen and (max-width:1227px){
+    .active-4{
+        width: 23.3vw;
+    }
+  }
+  @media screen and (max-width:1265px){
+    .active-3{
+        width: 31vw;
+    }
+  }
+  @media screen and (max-width:1042px){
+    .active-4{
+        width: 23vw;
+    }
+  }
+  @media screen and (max-width:908px){
+    .active-4{
+        width: 22.5vw;
+    }
+  }
+  @media screen and (max-width:997px){
+    .active-3{
+        width: 30.5vw;
+    }
   }

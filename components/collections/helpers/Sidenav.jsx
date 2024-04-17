@@ -92,7 +92,7 @@ const Sidenav = ({ filters,open,setOpen }) => {
           }
 
         </div>
-        <div className="side-down"></div>
+        {/* <div className="side-down"></div> */}
         </div>
       </div>
       </OutsideClickHandler>

@@ -33,7 +33,7 @@
 }
 .side-rel{
     padding: 30px 50px;
-    height: calc(100% - 120px);
+    height: calc(100%);
     overflow-y: auto;
 
     position: relative;

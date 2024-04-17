@@ -230,7 +230,7 @@ const Main = ({ data, aaya, queryParams, filtersopen, setfiltersOpen }) => {
           </div>
         </div>
         <div>
-          <p>Items : 0</p>
+          <p>Items : {data && data.length}</p>
         </div>
       </div>
 
