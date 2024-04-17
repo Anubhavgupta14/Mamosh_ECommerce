@@ -65,6 +65,9 @@ const Table = ({ columns, rows, editItem,setDeleteProduct }) => {
             );
             const data = await response.json();
             console.log("plplpll", data);
+            if(data==-2){
+              return "NA"
+            }
             return data; // Assuming you get the price from the response
           } catch (error) {
             console.error("Error fetching price:", error);

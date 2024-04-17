@@ -4,9 +4,11 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
 import toast, { Toaster } from "react-hot-toast";
+import { useRouter } from 'next/router';
 
 
 const Signup = ({ setLogin }) => {
+  const router = useRouter();
   const [load, setLoad] = useState(false);
   const [user, setUser] = useState({
     firstname: "",
@@ -86,6 +88,7 @@ const Signup = ({ setLogin }) => {
         );
 
         const data = await response.json();
+        localStorage.setItem('token',data.token)
 
         // Check if the response is successful and contains the token
         if (response.ok) {
@@ -93,7 +96,6 @@ const Signup = ({ setLogin }) => {
           // navigate('/')
           console.log("yaa", data);
           toast.success("Registered Successfully");
-          setLogin(true);
         } else {
           toast.error(data.error);
         }
@@ -116,6 +118,7 @@ const Signup = ({ setLogin }) => {
         // setEmail("")
         // setPassword("")
         setLoad(false);
+        router.push('/')
       } catch (error) {
         toast.error(error);
         console.error("Oops,", error);

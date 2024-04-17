@@ -31,7 +31,7 @@ const General = ({email}) => {
   //   gender: "",
   //   country: "",
   // });
-  const [address, Setaddress] = useState(null);
+  const [address, Setaddress] = useState([]);
 
   const handleData = (e) => {
     let name = e.target.name;
@@ -122,8 +122,13 @@ const General = ({email}) => {
       }
 
       // const userDataadd = await response.json();
-
-      Setaddress(userDataadd);
+      console.log(userDataadd,"ookokkokokokokokokokoko")
+      if(userDataadd.error=="Addresses not found"){
+        Setaddress([])
+      }
+      else{
+        Setaddress(userDataadd);
+      }
     } catch (error) {
       console.error("Error fetching user data:", error);
     }
@@ -159,7 +164,7 @@ const General = ({email}) => {
         <div className="my-2"></div>
 
         <div className="setadd">
-          {address && (
+          {address.length!==0 && (
             <>
               {address.map((el, i) => (
                 <div key={i} className="address-div">

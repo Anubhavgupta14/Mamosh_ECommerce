@@ -7,9 +7,10 @@ export const fetchMenuAsync = createAsyncThunk(
   async (_, { dispatch }) => {
     try {
       const data = await getMenu();
-      dispatch(menuSlice.actions.setCategories(data.reverse()));
+      console.log(data, "okokokookooko")
+      dispatch(menuSlice.actions.setCategories(data.data.reverse()));
       dispatch(menuSlice.actions.setTemp(true));
-      return data;
+      return data.data;
     } catch (error) {
       console.error('Error fetching menu:', error);
       throw error;
