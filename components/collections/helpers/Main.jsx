@@ -7,6 +7,7 @@ import { useSearchParams } from "react-router-dom";
 // import { useLocation } from "react-router-dom";
 import { useRouter } from 'next/router';
 // import { useNavigate } from "react-router-dom";
+import OutsideClickHandler from "react-outside-click-handler";
 // import img from "next/img";
 
 const Main = ({ data, aaya, queryParams, filtersopen, setfiltersOpen }) => {
@@ -60,10 +61,6 @@ const Main = ({ data, aaya, queryParams, filtersopen, setfiltersOpen }) => {
     {
       name: "Price (High to Low)",
       url: "price-descending",
-    },
-    {
-      name: "Custom",
-      url: "custom",
     },
     {
       name: "Newly Added",
@@ -164,10 +161,16 @@ const Main = ({ data, aaya, queryParams, filtersopen, setfiltersOpen }) => {
         </div>
 
         <div style={{ position: "relative" }} className="flex-fil">
+        <OutsideClickHandler
+        onOutsideClick={() => {
+          setOpen(false)
+        }}
+      >
           <div className="view-btn" onClick={() => setOpen(!open)}>
             <p>{sort[selected].name}</p>
             <IoIosArrowDown className={`ar ${open ? "arrow" : null}`} />
           </div>
+          </OutsideClickHandler>
           <div
             className="view-btn"
             onClick={() => setfiltersOpen(!filtersopen)}

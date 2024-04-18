@@ -48,6 +48,8 @@ import "../styles/pro.css"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import Head from 'next/head';
+
 
 
 export default function App({ Component, pageProps }) {
@@ -55,6 +57,13 @@ export default function App({ Component, pageProps }) {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         {/* <React.StrictMode> */}
+        <Head>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+          />
+          {/* You can also add other meta tags or links here */}
+        </Head>
         <Component {...pageProps} />
         {/* </React.StrictMode> */}
       </PersistGate>
