@@ -87,6 +87,27 @@ const Product = () => {
     qty: 1,
     price: backend.priceperunit,
   });
+
+  const deffunc=()=>{
+    const variants = backend.variants || [];
+        const selected = {};
+
+        variants.forEach((variant) => {
+          if (variant.title && variant.options && variant.options.length > 0) {
+            selected[variant.title] = variant.options[0];
+          }
+        });
+
+        if(backend.color){
+          console.log(backend.colorVar[0].options[0],"color")
+          setSelectedVariants({Color:backend.colorVar[0].options[0]})
+          console.log(selectedVariants,"trueeee")          
+
+        }
+        console.log(selected,"selected other")
+        setSelectedVariants({...selectedVariants, ...selected})
+        console.log(selectedVariants, "seleted")
+  }
   
   const [selectedVariants, setSelectedVariants] = useState({});
   useEffect(() => {
@@ -139,6 +160,9 @@ const Product = () => {
     fetchData();
   }, [productId]);
 
+  useEffect(()=>{
+    deffunc()
+  },[backend])
 
   const items = [
     {
@@ -286,24 +310,6 @@ const Product = () => {
           console.error("There was a problem with the fetch operation:", error);
         });
     }
-
-
-    const variants = backend.variants || [];
-        const selected = {};
-
-        variants.forEach((variant) => {
-          if (variant.title && variant.options && variant.options.length > 0) {
-            selected[variant.title] = variant.options[0];
-          }
-        });
-
-        if(backend.color){
-          console.log("trueeee")
-          setSelectedVariants({Color:backend.colorVar[0].options[0]})
-        }
-        console.log(selected,"selected other")
-        setSelectedVariants({...selectedVariants, ...selected})
-        console.log(selectedVariants, "seleted")
   }, []);
   //   useEffect(() => {
   //     const token = localStorage.getItem("token");
