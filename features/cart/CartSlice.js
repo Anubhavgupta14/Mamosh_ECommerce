@@ -34,7 +34,7 @@ export const CartSlice = createSlice({
       } else {
         // If the item doesn't exist, add a new item
         state.itemcount += qty;
-        state.cart.push({...action.payload, id: nanoid()});
+        state.cart.push({...action.payload});
       }
       console.log("state", state)
       sendData(state)
