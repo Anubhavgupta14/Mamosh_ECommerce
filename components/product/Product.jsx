@@ -663,7 +663,7 @@ const Product = () => {
                           <div
                             key={j}
                             className={`big-color ${
-                              (color2 && (selectedVariants.Color === color) || j==defcol)
+                              (color2 && (selectedVariants.Color === color))
                                 ? "color2"
                                 : ""
                             }`}
@@ -675,7 +675,7 @@ const Product = () => {
                               // }));
                               console.log(selectedVariants,"default")
                               // if(j!=0){
-                                Setdefcol(j)
+                                // Setdefcol(j)
                               
                               setSelectedVariants({
                                 ...selectedVariants,
