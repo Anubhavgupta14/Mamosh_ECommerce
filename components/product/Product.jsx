@@ -618,6 +618,7 @@ const Product = () => {
   return (
     <>
       <Navbar />
+      <Cart active={active} setactive={setactive} divcart={divcart} Setdivcart={Setdivcart}/>
       <div className="pro_main">
         {!isMobileMode ? (
           <div className="pro_img">
@@ -874,7 +875,7 @@ const Product = () => {
                 )}
               </div>
             </div>
-            <Cart active={active} setactive={setactive} divcart={divcart} Setdivcart={Setdivcart}/>
+
 
             {isScrolled && (
               <>
