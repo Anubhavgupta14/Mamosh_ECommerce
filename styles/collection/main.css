@@ -209,14 +209,15 @@
 }
 
 .item-name{
-    font-size: 12px;
+    font-size: 14px;
     margin: 10px 0;
     text-transform: uppercase;
     line-height: 15px;
     letter-spacing: .06em;
+    margin-bottom: 4px;
 }
 .item-price{
-    font-size: 12px;
+    font-size: 14px;
 }
 .size{
     width: 100%;
@@ -275,6 +276,7 @@
   }
   .product-box{
     margin-top: 20px;
+    margin-block: 20px;
   }
   
   @media screen and (max-width:1227px){

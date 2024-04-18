@@ -119,9 +119,10 @@
  width: 100%;
  height: 36px;
  display: flex;
+ font-family: rajdhani;
  color: rgba(0,0,0,0.5);
  align-items: center;
- padding: .3em 10px 0;
+ padding: .3em 10px;
  text-align: left;
  cursor: pointer;
  transition: color .4s ease;
