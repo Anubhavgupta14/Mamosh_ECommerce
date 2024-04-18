@@ -12,13 +12,39 @@
     /* background-color: black;
 	/* background-color: black; */
 }
+.goback{
+	position: absolute;
+    right: 20px;
+    top: 25px;
+    z-index: 10;
+	cursor: pointer;
+}
+.goback:hover{
+	color: rgba(0, 0, 0, .8);
+}
 .react-international-phone-input-container .react-international-phone-input{
 	border: none !important;
 	border-bottom: 1px solid rgba(0, 0, 0, .3) !important;
 }
+.react-international-phone-input-container .react-international-phone-input:focus{
+	/* border: none !important; */
+	border-bottom: 3px solid rgba(0, 0, 0, .3) !important;
+}
+.react-international-phone-input-container .react-international-phone-input:hover{
+	/* border: none !important; */
+	border-bottom: 2px solid rgba(0, 0, 0, .3) !important;
+}
 .react-international-phone-country-selector-button{
 	border: none !important;
 	border-bottom: 1px solid rgba(0, 0, 0, .3) !important;
+}
+.react-international-phone-country-selector-button:hover{
+	border: none !important;
+	border-bottom: 2px solid rgba(0, 0, 0, .3) !important;
+}
+.react-international-phone-country-selector-button:hover{
+	border: none !important;
+	border-bottom: 3px solid rgba(0, 0, 0, .3) !important;
 }
 
 .login-left-cont {
@@ -86,13 +112,13 @@
 .login-inp:hover,
 .half-inp:hover,
 .react-tel-input .form-control:hover {
-	border-bottom: 1px solid #3b82f6 !important;
+	border-bottom: 1px solid black !important;
 }
 
 .login-inp:focus,
 .half-inp:focus,
 .react-tel-input .form-control:focus {
-	border-bottom: 2px solid #3b82f6 !important;
+	border-bottom: 2px solid black !important;
 }
 
 .pass-cont {
@@ -142,7 +168,7 @@
 .login-btn:hover .login-load {
 	border: 3px solid rgba(255, 255, 255, .2);
 	border-radius: 50%;
-	border-top: 3px solid #3b82f6;
+	border-top: 3px solid black;
 }
 
 .not-up {
@@ -302,11 +328,11 @@
 }
 
 .inp-cont input:hover {
-	border-bottom: 1px solid #3b82f6;
+	border-bottom: 1px solid black;
 }
 
 .inp-cont:focus {
-	border-bottom: 2px solid #3b82f6;
+	border-bottom: 2px solid black;
 }
 
 .login-svg-cont {

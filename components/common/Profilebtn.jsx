@@ -99,7 +99,7 @@ export default function AccountMenu() {
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center"}}>
-        <Tooltip title="Profile">
+        <Tooltip>
           <IconButton
             onClick={handleClick}
             size="small"

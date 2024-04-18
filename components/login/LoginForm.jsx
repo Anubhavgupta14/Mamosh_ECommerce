@@ -114,6 +114,7 @@ const LoginForm = ({ setLogin }) => {
 	// JSX structure for the login form
 	return (
 		<div className="left-two">
+
 			<div className="login-inner">
 				<div className="login-t">Login</div>
 				<div className='inp-rel'>

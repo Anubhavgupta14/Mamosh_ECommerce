@@ -2,15 +2,18 @@ import React, { useState} from 'react'
 import Signup from './SignupForm';
 import LoginForm from './LoginForm';
 import Navbar from "../common/Navbar2"
+import { useRouter } from 'next/router';
 
 const Login = () => {
 
 	const [login, setLogin] = useState(true);
+	const router = useRouter();
 
 	return (
 		<>
 			{/* <Navbar/> */}
 			<div className="login-cont">
+			<p className='goback' onClick={()=>{router.push('/')}}>Go Back</p>
 				<div className="login-left-cont" style={{ transform: login ? 'translateY(0%)' : 'translateY(-50%)' }}>
 					<div className="left-one">
 						<img src="https://amiri.com/cdn/shop/collections/SHOES_SPLATTER.jpg?v=1700157564&width=1980" alt='' />
