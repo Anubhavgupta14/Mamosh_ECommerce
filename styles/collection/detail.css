@@ -67,10 +67,10 @@
 }
 
 .qty-detail{
-    width: 12%;
-    margin-top: 2vh;
-    margin-bottom: 4vh;
-    height: 5vh;
+    width: 110px;
+    margin-top: 12px;
+    margin-bottom: 30px;
+    height: 40px;
     border: 1px solid;
     display: flex;
 }
