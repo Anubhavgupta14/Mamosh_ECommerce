@@ -908,19 +908,29 @@ const Checkout = () => {
                       {cart &&
                         item.variants.map((op, j) => (
                           <div key={j}>
-                            {Object.keys(op).map(
-                              (
-                                key,
-                                index // Corrected usage of map
-                              ) => (
-                                <p className="cart-p" key={index}>
-                                  {key}:{" "}
-                                  <span>
-                                    {op[key]}
-                                  </span>
-                                </p>
-                              )
-                            )}
+                            {Object.keys(op).map((key, index) => (
+                                        <div key={index} style={{position:'relative'}}>
+                                          {key === "Color" ? (
+                                            <>
+                                            <p className="cart-p" key={index}>
+                                              {key}:
+                                            </p>
+                                            <div
+                                              className="color-box-cart"
+                                              style={{
+                                                backgroundColor: op[key],
+                                                width: "10px",
+                                                height: "10px",
+                                              }}
+                                            ></div>
+                                            </>
+                                          ) : (
+                                            <p className="cart-p" key={index}>
+                                              {key}: <span>{op[key]}</span>
+                                            </p>
+                                          )}
+                                        </div>
+                                      ))}
                           </div>
                         ))}
                     </div>
