@@ -147,6 +147,7 @@ const Main = ({ data, aaya, queryParams, filtersopen, setfiltersOpen }) => {
 
   return (
     <div className="main-div">
+      <p className="head-collec">{queryParams.menu} {queryParams.submenu}</p>
       <div className="col-search-div">
         <div className="search-bar">
           <input

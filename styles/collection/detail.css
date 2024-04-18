@@ -43,7 +43,6 @@
 }
 .detail-head{
     font-size: 30.6px;
-    font-family: myFont2;
     font-weight: 500;
     letter-spacing: 2px;
     /* font-family: myFont2; */
@@ -200,7 +199,6 @@ tr:hover{
     margin-block: 1vh;
     background-color: black;
     color: white;
-    font-family: myFont;
     letter-spacing: 2px;
     font-weight: 600;
     cursor: pointer;

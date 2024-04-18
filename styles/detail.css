@@ -59,7 +59,6 @@
 }
 .detail-head{
     font-size: 30.6px;
-    font-family: 'Montserrat', sans-serif!important;
     font-weight: 500;
     letter-spacing: 2px;
     /* font-family: myFont2; */
@@ -214,7 +213,6 @@
     border: 1px solid #e8e8e1;
 }
 .size-box-detail p{
-	font-family: 'Montserrat', sans-serif!important;
 }
 .size-box-detail:hover{
     background: #000;
@@ -269,7 +267,6 @@ tr:hover{
     margin-block: 1vh;
     background-color: black;
     color: white;
-	font-family: 'Montserrat', sans-serif!important;
     letter-spacing: 2px;
     font-weight: 600;
     cursor: pointer;
@@ -280,7 +277,6 @@ tr:hover{
     margin-block: 1vh;
     background-color: black;
     color: white;
-	font-family: 'Montserrat', sans-serif!important;
     letter-spacing: 2px;
     font-weight: 600;
     cursor: pointer;
@@ -299,7 +295,6 @@ tr:hover{
     height: 5vh;
     margin-block: 1vh;
     background-color: white;
-	font-family: 'Montserrat', sans-serif!important;
     letter-spacing: 2px;
     display: flex;
     justify-content: center;
@@ -314,7 +309,6 @@ tr:hover{
     height: 40px;
     margin-block: 1vh;
     background-color: white;
-	font-family: 'Montserrat', sans-serif!important;
     letter-spacing: 2px;
     display: flex;
     justify-content: center;
@@ -519,9 +513,8 @@ tr:hover{
     width: 30%;
 }
 .cart-p-main{
-    font-size: 23px;
+    font-size: 14px;
     width: 300px;
-	/* font-family: 'Montserrat', sans-serif!important; */
 }
 .qty-detail2{
     width: 80px;
@@ -585,7 +578,6 @@ tr:hover{
     height: 36px;
     text-align: center;
     white-space: nowrap;
-	font-family: 'Montserrat', sans-serif!important;
     overflow: hidden!important;
     text-overflow: ellipsis;
 }
@@ -658,7 +650,6 @@ tr:hover{
 }
 .cart-p3-main{
     font-size: 16px;
-	font-family: 'Montserrat', sans-serif!important;
 }
 .order-btn:hover{
     background-image: linear-gradient(90deg,transparent,hsla(0,0%,100%,.25),transparent);
@@ -776,7 +767,7 @@ tr:hover{
 
 }
 .bottom-cart{
-    height: 35%;
+    height: 188px;
 }
 
 

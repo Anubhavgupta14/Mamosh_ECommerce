@@ -167,7 +167,13 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    justify-content: space-between;
+    justify-content: center;
+}
+.head-collec{
+    text-align: center;
+    font-size: 25px;
+    line-height: 22px;
+    margin-bottom: 70px;
 }
 .store-2{
     gap: 4px;

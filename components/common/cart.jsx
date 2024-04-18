@@ -14,8 +14,8 @@ import FinalpriceLoader from "../loaders/FinalpriceLoader";
 import { addtocart, editqty } from "../../features/cart/CartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { FiPlus } from "react-icons/fi";
-import { useRouter } from 'next/router';
-import {checkExist, FinalPrice} from "../../api_fetch/admin/Cart"
+import { useRouter } from "next/router";
+import { checkExist, FinalPrice } from "../../api_fetch/admin/Cart";
 const Detail = ({ active, setactive, divcart, Setdivcart }) => {
   // const navigate = useNavigate();
   const router = useRouter();
@@ -87,7 +87,6 @@ const Detail = ({ active, setactive, divcart, Setdivcart }) => {
   const [diffprice, Setdiffprice] = useState(0);
   const [colorcount, Setcolorcount] = useState(0);
   const [varcount, Setvarcount] = useState(0);
-
 
   function combineObjects(obj1, obj2) {
     return { ...obj1, ...obj2 };
@@ -270,7 +269,6 @@ const Detail = ({ active, setactive, divcart, Setdivcart }) => {
     );
   }
 
-
   useEffect(() => {
     // Function to fetch data based on the query string
     const fetchData = async () => {
@@ -309,7 +307,7 @@ const Detail = ({ active, setactive, divcart, Setdivcart }) => {
             const data = await FinalPrice({
               productid: el.productid,
               variants: el.variants[0], // assuming variants is an array and you want to send the first variant
-            })
+            });
             // const data = await response.json();
             console.log("plplpll", data);
             return data; // Assuming you get the price from the response
@@ -359,16 +357,29 @@ const Detail = ({ active, setactive, divcart, Setdivcart }) => {
   ];
 
   return (
-    <div className="cart-parent" style={{background: active ? "rgba(0,0,0,0.7)" : "rgba(0,0,0,0)", pointerEvents:active ? "all":"none"}}>
+    <div
+      className="cart-parent"
+      style={{
+        background: active ? "rgba(0,0,0,0.7)" : "rgba(0,0,0,0)",
+        pointerEvents: active ? "all" : "none",
+      }}
+    >
       <OutsideClickHandler
         onOutsideClick={() => {
           setactive(false);
         }}
       >
         <Toaster />
-        {active && 
-        <p onClick={()=>{setactive(false)}} className="continueshop">Continue Shopping</p>
-        }
+        {active && (
+          <p
+            onClick={() => {
+              setactive(false);
+            }}
+            className="continueshop"
+          >
+            Continue Shopping
+          </p>
+        )}
         {divcart && (
           <div
             className={
@@ -451,16 +462,29 @@ const Detail = ({ active, setactive, divcart, Setdivcart }) => {
                                 <div className="about-item">
                                   {el.variants.map((op, j) => (
                                     <div key={j} style={{ width: "20%" }}>
-                                      {Object.keys(op).map(
-                                        (
-                                          key,
-                                          index // Corrected usage of map
-                                        ) => (
-                                          <p className="cart-p" key={index}>
-                                            {key}: <span>{op[key]}</span>
-                                          </p>
-                                        )
-                                      )}
+                                      {Object.keys(op).map((key, index) => (
+                                        <div key={index} style={{position:'relative'}}>
+                                          {key === "Color" ? (
+                                            <>
+                                            <p className="cart-p" key={index}>
+                                              {key}:
+                                            </p>
+                                            <div
+                                              className="color-box-cart"
+                                              style={{
+                                                backgroundColor: op[key],
+                                                width: "10px",
+                                                height: "10px",
+                                              }}
+                                            ></div>
+                                            </>
+                                          ) : (
+                                            <p className="cart-p" key={index}>
+                                              {key}: <span>{op[key]}</span>
+                                            </p>
+                                          )}
+                                        </div>
+                                      ))}
                                     </div>
                                   ))}
 
@@ -479,7 +503,7 @@ const Detail = ({ active, setactive, divcart, Setdivcart }) => {
                                       }}
                                       style={{ cursor: "pointer" }}
                                     >
-                                      <FiMinus style={{fontSize:'11px'}} />
+                                      <FiMinus style={{ fontSize: "11px" }} />
                                     </div>
                                     <div className="btn_edit">
                                       <p>{el.qty}</p>
@@ -498,7 +522,7 @@ const Detail = ({ active, setactive, divcart, Setdivcart }) => {
                                       }}
                                       style={{ cursor: "pointer" }}
                                     >
-                                      <FiPlus className="edit-logo"/>
+                                      <FiPlus className="edit-logo" />
                                     </div>
                                   </div>
                                   {!price ? (

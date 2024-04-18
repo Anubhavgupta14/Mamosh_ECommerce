@@ -654,7 +654,10 @@ const Product = () => {
         <div className="pro_content">
           <div className="pro_inside_content">
             <div className="pro_head">
-              <p className="pro_p_one">ESSENTIALS</p>
+              {
+                backend.ribbon && 
+              <p className="pro_p_one">{backend.ribbon}</p>
+              }
               <p className="pro_p_main">{backend.name}</p>
               <p className="pro_p_price">Rs. {finalprice + diffprice}</p>
 
@@ -751,41 +754,7 @@ const Product = () => {
                     ))}
                   </div>
 
-                  <p className="detail-p2">QUANTITY</p>
-              <div className="qty-detail">
-                <div
-                  className="btn_detail2"
-                  onClick={() => {
-                    if (cartdata.qty > 1) {
-                      Setcartdata((prevCartdata) => ({
-                        ...prevCartdata,
-                        qty: prevCartdata.qty - 1,
-                      }));
-                    }
-                  }}
-                  style={{ cursor: "pointer" }}
-                >
-                  <FiMinus />
-                </div>
-                <div className="btn1">
-                  <p>{cartdata.qty}</p>
-                </div>
-                <div
-                  className="btn_detail2"
-                  onClick={() => {
-                    Setcartdata((prevCartdata) => ({
-                      ...prevCartdata,
-                      qty: prevCartdata.qty + 1,
-                    }));
-                  }}
-                  style={{ cursor: "pointer" }}
-                >
-                  <FaPlus />
-                </div>
-              </div>
-
-
-                  <div className="pro_btn_addtocart" onClick={() => {
+                  <div className="login-btn flex-all" onClick={() => {
                   addtoCart(cartdata);
                 }}>
                     <p>Add to Cart</p>
@@ -877,7 +846,7 @@ const Product = () => {
             </div>
 
 
-            {isScrolled && (
+            {isMobileMode && isScrolled && (
               <>
                 <div className="pro_variants">
                   <div className="single_variant">
