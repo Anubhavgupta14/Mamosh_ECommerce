@@ -13,6 +13,7 @@ import {getMenu, getSubMenu} from "../../api_fetch/admin/Menu"
 import {fetchuser} from "../../features/user/UserSlice"
 import {fetchMenuAsync} from "../../features/menu/MenuSlice"
 import { RxHamburgerMenu } from "react-icons/rx";
+import Searchbar from "../common/Searchbar"
 const Navbar = () => {
     const router = useRouter();
     const itemcount = useSelector((state) => state.cart.itemcount);
@@ -33,6 +34,8 @@ const Navbar = () => {
     const temp = useSelector((state)=>state.menu.temp)
     const [isMobileMode, setIsMobileMode] = useState(false);
     const [opennav, Setopennav] = useState(false)
+    const [search_open, Setsearch_open] = useState(false)
+    const [search_open2, Setsearch_open2] = useState(false)
 
     const checkuser =()=>{
         const token = localStorage.getItem("token");
@@ -117,6 +120,7 @@ const Navbar = () => {
     }
     return (
         <>
+            <Searchbar search_open={search_open} Setsearch_open={Setsearch_open} search_open2={search_open2} Setsearch_open2={Setsearch_open2}/>
             <div className="nav-wrap">
             <div className="navbar-top flex-all"><div className="nav-top-text">Get 20% discount on your first order!</div></div>
                 <div className="navbar_comp">
@@ -135,8 +139,8 @@ const Navbar = () => {
                     {/* {!isMobileMode &&  */}
                     <div className="navbar-right">
                         {!isMobileMode && 
-                        <div className="menu-right-logo">
-                            <BsSearch />
+                        <div className="menu-right-logo" onClick={()=>{Setsearch_open(true), Setsearch_open2(true)}}>
+                            <BsSearch  />
                         </div>
                         }
 

@@ -45,6 +45,7 @@ import "../styles/admin/admin.css"
 import "../styles/global.css";
 import "../styles/invoice/invoice.css"
 import "../styles/pro.css"
+import "../styles/searchbar.css"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
