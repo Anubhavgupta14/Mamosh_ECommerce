@@ -15,6 +15,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { addtocart, editqty } from "../../features/cart/CartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { IoPlayCircleOutline } from "react-icons/io5";
+import OutsideClickHandler from "react-outside-click-handler";
 import { useRouter } from "next/router";
 import Cart from "../common/cart";
 import { checkExist, FinalPrice } from "../../api_fetch/admin/Cart";
@@ -567,6 +568,7 @@ const Product = () => {
   const [toggle_shipping, Settoggle_shipping] = useState(false);
   const [toggle_share, Settoggle_share] = useState(false);
   const [opensize, Setopensize] = useState(false);
+  const [opencolor, Setopencolor] = useState(false);
 
   const [isMobileMode, setIsMobileMode] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -614,6 +616,8 @@ const Product = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const [selectcolor, Setselectcolor] = useState(null)
 
   return (
     <>
@@ -663,7 +667,7 @@ const Product = () => {
 
               {!isMobileMode && (
                 <>
-                {backend.color && (
+                {/* {backend.color && (
                 <>
                   <p className="detail-p2">COLOR</p>
                   <div className="color-main-div">
@@ -717,8 +721,70 @@ const Product = () => {
                     ))}
                   </div>
                 </>
-              )}
+              )} */}
                   <div className="pro_variants">
+                    {backend.color && backend.colorVar.map((el, i) => (
+                      <div className="single_variant" key={i}>
+                        <div
+                          style={{
+                            display: "flex",
+                            position: "relative",
+                          }}
+                        >
+                          <div
+                            className="single_box"
+                            onClick={()=>{Setopencolor(true)}}
+                          >
+                            {selectcolor ?
+                            <p>{selectcolor}</p> 
+                            :
+                            <p>Select Color</p>
+
+                            }
+                            
+                          </div>
+                          {/* <IoIosArrowDown className="cart-logo2" /> */}
+                        </div>
+                        <p className="pro_vari_detail">{el.title}</p>
+                        {opencolor && (
+                          <OutsideClickHandler
+                          onOutsideClick={() => {
+                            Setopencolor(false);
+                          }}
+                        >
+                          <div className="size_chart_pro">
+                            {el.options.map((op, j) => (
+                              <div className="single_size" style={{backgroundColor:`${op}`, color:`${op}`}}
+                              onClick={(e) => {
+                                setcolor2(true);
+                                // Setcartdata((prevCartdata) => ({
+                                //   ...prevCartdata,
+                                //   color,
+                                // }));
+                                console.log(selectedVariants,"default")
+                                // if(j!=0){
+                                  // Setdefcol(j)
+                                
+                                setSelectedVariants({
+                                  ...selectedVariants,
+                                  Color: op,
+                                });
+                                Settemp(temp + 1);
+                                Setcolorcount(colorcount + 1);
+                                Setselectcolor(op)
+                                Setopencolor(false)
+                              }}
+                              >
+                                
+                              </div>
+                            ))}
+                          </div>
+                          </OutsideClickHandler>
+                        )}
+                      </div>
+                    ))}
+
+
                     {backend.variants.map((el, i) => (
                       <div className="single_variant" key={i}>
                         <div
@@ -945,7 +1011,6 @@ const Product = () => {
           {you_may.map((el, i) => (
             <div className="you_img_div">
               <img src={el.img} className="pro_img_you_may" />
-              <p>ESSENTIALS</p>
               <p>{el.name}</p>
               <p style={{ marginTop: "10px", color: "rgba(0,0,0,0.7)" }}>
                 &#8377; {el.price}

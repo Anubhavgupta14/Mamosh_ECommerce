@@ -57,6 +57,7 @@
     margin-top: 20px;
     width: 100%;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 
@@ -72,6 +73,9 @@
     background-color: white;
     display: flex;
     flex-wrap: wrap;
+    top: 40px;
+    gap: 1px;
+    z-index: 8;
 }
 .single_size{   
     border: 1px solid rgba(0,0,0,0.1);
@@ -204,7 +208,7 @@
     
 }
 .head_pro_you{
-    font-size: 12px;
+    font-size: 16px;
     margin-bottom: 10px;
     margin-inline: 2vw;
 }
@@ -218,7 +222,7 @@
     flex-wrap: wrap;
 }
 .you_img_div{
-    width: 23%;
+    width: 24.8%;
     cursor: pointer;
 }
 .pro_img_you_may{
@@ -226,7 +230,7 @@
     object-fit: cover !important;
 }
 .you_img_div p{
-    font-size: 12px;
+    font-size: 14px;
 
 }
 .cau-img{

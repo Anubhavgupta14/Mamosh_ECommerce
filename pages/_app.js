@@ -59,10 +59,8 @@ export default function App({ Component, pageProps }) {
       <PersistGate loading={null} persistor={persistor}>
         {/* <React.StrictMode> */}
         <Head>
-          <link
-            href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap"
-            rel="stylesheet"
-          />
+        <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+          </link>
           {/* You can also add other meta tags or links here */}
         </Head>
         <Component {...pageProps} />

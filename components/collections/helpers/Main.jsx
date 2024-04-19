@@ -187,7 +187,7 @@ const Main = ({ data, aaya, queryParams, filtersopen, setfiltersOpen }) => {
         </div>
       </div>
 
-      <div className="menu-view">
+      {/* <div className="menu-view">
         <div className="view">
           <p>View As</p>
           <div
@@ -236,7 +236,7 @@ const Main = ({ data, aaya, queryParams, filtersopen, setfiltersOpen }) => {
         <div>
           <p>Items : {data && data.length}</p>
         </div>
-      </div>
+      </div> */}
 
       {!aaya ? (
         <CategoryLoader />
