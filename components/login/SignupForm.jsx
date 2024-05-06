@@ -77,7 +77,7 @@ const Signup = ({ setLogin }) => {
       setLoad(true);
       try {
         const response = await fetch(
-          `https://mamosh-backend.vercel.app/api/user/signup`,
+          `https://mamosh-backend-two.vercel.app/api/user/signup`,
           {
             method: "POST",
             headers: {

@@ -26,7 +26,7 @@ const General = ({email}) => {
     try {
       setLoad(true);
       // const response = await fetch(
-      //   `https://mamosh-backend.vercel.app/api/user/changepassword`,
+      //   `https://mamosh-backend-two.vercel.app/api/user/changepassword`,
       //   {
       //     method: "POST",
       //     headers: {

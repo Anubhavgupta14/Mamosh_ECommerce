@@ -17,7 +17,7 @@ export const Const = {
   Inactive: false,
   Limit: 20,
   // Link: "http://localhost:3001/",
-  Link: "https://mamosh-backend.vercel.app/",
+  Link: "https://mamosh-backend-two.vercel.app/",
 };
 
 export const ProcessAPI = async (res) => {

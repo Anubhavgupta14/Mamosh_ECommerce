@@ -117,7 +117,7 @@ const Product = () => {
       try {
         // Make a GET request to the API endpoint with the provided productId
         // const response = await fetch(
-        //   `https://mamosh-backend.vercel.app/api/products/getOne/${productId}`
+        //   `https://mamosh-backend-two.vercel.app/api/products/getOne/${productId}`
         // );
 
         const data = await editProduct(productId);
@@ -289,7 +289,7 @@ const Product = () => {
       Setuserlogged(true);
       console.log("loggedin");
 
-      fetch(`https://mamosh-backend.vercel.app/api/addcart/checkExist`, {
+      fetch(`https://mamosh-backend-two.vercel.app/api/addcart/checkExist`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -317,7 +317,7 @@ const Product = () => {
   //     if (token) {
 
   //         // Fetch the API endpoint
-  //         fetch(`https://mamosh-backend.vercel.app/api/addcart/checkvar`, {
+  //         fetch(`https://mamosh-backend-two.vercel.app/api/addcart/checkvar`, {
   //             method: 'POST',
   //             headers: {
   //                 'Content-Type': 'application/json',

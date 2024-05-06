@@ -104,7 +104,7 @@ const Checkout = () => {
   };
   const saveorder = async()=>{
     try{
-      // const response = await fetch(`https://mamosh-backend.vercel.app/api/orders/saveorders`, {
+      // const response = await fetch(`https://mamosh-backend-two.vercel.app/api/orders/saveorders`, {
       //   method: 'POST',
       //   headers: {
       //     'Content-Type': 'application/json',
@@ -123,7 +123,7 @@ const Checkout = () => {
   }
   const saveordernologin = async()=>{
     try{
-      // const response = await fetch(`https://mamosh-backend.vercel.app/api/orders/saveordersnologin`, {
+      // const response = await fetch(`https://mamosh-backend-two.vercel.app/api/orders/saveordersnologin`, {
       //   method: 'POST',
       //   headers: {
       //     'Content-Type': 'application/json',
@@ -146,7 +146,7 @@ const Checkout = () => {
     const token = localStorage.getItem('token');
     if(token){
     try{
-      // const response = await fetch(`https://mamosh-backend.vercel.app/api/addcart/checkout`, {
+      // const response = await fetch(`https://mamosh-backend-two.vercel.app/api/addcart/checkout`, {
       //   method: 'POST',
       //   headers: {
       //     'Content-Type': 'application/json',
@@ -242,7 +242,7 @@ const Checkout = () => {
       };
 
       // Make a POST request to the API
-      fetch(`https://mamosh-backend.vercel.app/api/user/saveaddress`, {
+      fetch(`https://mamosh-backend-two.vercel.app/api/user/saveaddress`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -292,7 +292,7 @@ const Checkout = () => {
       };
 
       // Make a POST request to the API
-      fetch(`https://mamosh-backend.vercel.app/api/user/saveaddressnologin`, {
+      fetch(`https://mamosh-backend-two.vercel.app/api/user/saveaddressnologin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -345,7 +345,7 @@ const Checkout = () => {
         }
         setUser(true);
         //  const response = await fetch(
-        //   `https://mamosh-backend.vercel.app/api/addcart/getcart`,
+        //   `https://mamosh-backend-two.vercel.app/api/addcart/getcart`,
         //    {
         //      method: "POST",
         //      headers: {
@@ -374,7 +374,7 @@ const Checkout = () => {
       }
 
       // const response = await fetch(
-      //   `https://mamosh-backend.vercel.app/api/address/checkaddress`,
+      //   `https://mamosh-backend-two.vercel.app/api/address/checkaddress`,
       //   {
       //     method: "POST",
       //     headers: {

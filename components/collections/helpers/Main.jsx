@@ -112,7 +112,7 @@ const Main = ({ data, aaya, queryParams, filtersopen, setfiltersOpen }) => {
   //             setQueryParams(paramsObject);
   //             console.log(paramsObject,"=> paramsobject")
 
-  //                 const response = await fetch(`https://mamosh-backend.vercel.app/api/categories/fetchcat`, {
+  //                 const response = await fetch(`https://mamosh-backend-two.vercel.app/api/categories/fetchcat`, {
   //                     method: 'POST',
   //                     headers: {
   //                         'Content-Type': 'application/json',

@@ -51,7 +51,7 @@ const Table = ({ columns, rows, editItem,setDeleteProduct }) => {
           // Start from index 1
           try {
             const response = await fetch(
-              `https://mamosh-backend.vercel.app/api/products/getFinalPrice`,
+              `https://mamosh-backend-two.vercel.app/api/products/getFinalPrice`,
               {
                 method: "POST",
                 headers: {

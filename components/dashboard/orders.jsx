@@ -64,7 +64,7 @@ const General = () => {
     const func = async () => {
       try {
         const token = localStorage.getItem('token')
-      //   const response = await fetch(`https://mamosh-backend.vercel.app/api/orders/getorders`, {
+      //   const response = await fetch(`https://mamosh-backend-two.vercel.app/api/orders/getorders`, {
       //   method: 'POST',
       //   headers: {
       //     'Content-Type': 'application/json',

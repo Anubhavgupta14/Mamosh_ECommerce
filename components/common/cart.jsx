@@ -159,7 +159,7 @@ const Detail = ({ active, setactive, divcart, Setdivcart }) => {
       Setuserlogged(true);
       console.log("loggedin");
 
-      fetch(`https://mamosh-backend.vercel.app/api/addcart/checkExist`, {
+      fetch(`https://mamosh-backend-two.vercel.app/api/addcart/checkExist`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -186,7 +186,7 @@ const Detail = ({ active, setactive, divcart, Setdivcart }) => {
   //     if (token) {
 
   //         // Fetch the API endpoint
-  //         fetch(`https://mamosh-backend.vercel.app/api/addcart/checkvar`, {
+  //         fetch(`https://mamosh-backend-two.vercel.app/api/addcart/checkvar`, {
   //             method: 'POST',
   //             headers: {
   //                 'Content-Type': 'application/json',
