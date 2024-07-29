@@ -44,7 +44,7 @@ const Layout = ({ email }) => {
     try {
       // Extract JWT token from localStorage
       const response = await fetch(
-        `https://mamosh-backend-two.vercel.app/api/user/getcard`,
+        `https://backend.mamoshfashion.com/api/user/getcard`,
         {
           method: "POST",
           headers: {

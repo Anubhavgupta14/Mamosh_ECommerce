@@ -103,7 +103,7 @@ const sendData = async (fullinfocart) => {
       const datagone = {token: token, ...fullinfocart}
       console.log("datagone", datagone)
 
-      // const response = await fetch(`https://mamosh-backend-two.vercel.app/api/addcart`, {
+      // const response = await fetch(`https://backend.mamoshfashion.com/api/addcart`, {
       //     method: "POST",
       //     headers: {
       //         "Content-Type": "application/json",

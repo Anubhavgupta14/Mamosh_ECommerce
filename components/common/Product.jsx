@@ -91,7 +91,7 @@ const Detail = () => {
       try {
         // Make a GET request to the API endpoint with the provided productId
         // const response = await fetch(
-        //   `https://mamosh-backend-two.vercel.app/api/products/getOne/${productId}`
+        //   `https://backend.mamoshfashion.com/api/products/getOne/${productId}`
         // );
 
         const data = await editProduct(productId)
@@ -261,7 +261,7 @@ const Detail = () => {
         console.log("loggedin");
 
         
-         fetch(`https://mamosh-backend-two.vercel.app/api/addcart/checkExist`, {
+         fetch(`https://backend.mamoshfashion.com/api/addcart/checkExist`, {
              method: 'POST',
             headers: {
                  'Content-Type': 'application/json',
@@ -292,7 +292,7 @@ const Detail = () => {
 
 
 //         // Fetch the API endpoint
-//         fetch(`https://mamosh-backend-two.vercel.app/api/addcart/checkvar`, {
+//         fetch(`https://backend.mamoshfashion.com/api/addcart/checkvar`, {
 //             method: 'POST',
 //             headers: {
 //                 'Content-Type': 'application/json',

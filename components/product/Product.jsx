@@ -100,14 +100,14 @@ const Product = () => {
         });
 
         if(backend.color){
-          console.log(backend.colorVar[0].options[0],"color")
+          // console.log(backend.colorVar[0].options[0],"color")
           setSelectedVariants({Color:backend.colorVar[0].options[0]})
-          console.log(selectedVariants,"trueeee")          
+          // console.log(selectedVariants,"trueeee")          
 
         }
-        console.log(selected,"selected other")
+        // console.log(selected,"selected other")
         setSelectedVariants({...selectedVariants, ...selected})
-        console.log(selectedVariants, "seleted")
+        // console.log(selectedVariants, "seleted")
   }
   
   const [selectedVariants, setSelectedVariants] = useState({});
@@ -117,7 +117,7 @@ const Product = () => {
       try {
         // Make a GET request to the API endpoint with the provided productId
         // const response = await fetch(
-        //   `https://mamosh-backend-two.vercel.app/api/products/getOne/${productId}`
+        //   `https://backend.mamoshfashion.com/api/products/getOne/${productId}`
         // );
 
         const data = await editProduct(productId);
@@ -143,9 +143,7 @@ const Product = () => {
 
           if (data.discountTypeRs) {
             Setfinalprice(data.priceperunit - data.discountperunit);
-          } else {
-            return;
-          }
+          } 
           let tempmedia = [...data.images, ...data.videoPreviewImgs];
           let tempmediabig = [...data.images, ...data.videos];
           Setmedia(tempmedia);
@@ -196,12 +194,15 @@ const Product = () => {
       ...prevState,
       [variantTitle]: option,
     }));
-    let vari = backend.variants[backend.ind].title;
-    if (vari == variantTitle) {
-      Setvarcount(varcount + 1);
-    }
+    if(backend.ind){
 
-    Settemp(temp + 1);
+      let vari = backend.variants[backend.ind].title;
+      if (vari == variantTitle) {
+        Setvarcount(varcount + 1);
+      }
+      
+    }
+      Settemp(temp + 1);
   };
 
   function combineObjects(obj1, obj2) {
@@ -218,7 +219,7 @@ const Product = () => {
         // console.log(allselected)
 
         const resultIndex = linearSearch(backend.variantsData, select);
-        console.log("seslct", select);
+        // console.log("seslct", select);
         Setdiffprice(backend.variantsDetails[resultIndex].priceDifference || 0);
       }
     } else {
@@ -287,9 +288,9 @@ const Product = () => {
     const token = localStorage.getItem("token");
     if (token) {
       Setuserlogged(true);
-      console.log("loggedin");
+      // console.log("loggedin");
 
-      fetch(`https://mamosh-backend-two.vercel.app/api/addcart/checkExist`, {
+      fetch(`https://backend.mamoshfashion.com/api/addcart/checkExist`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -303,9 +304,9 @@ const Product = () => {
           return response.json();
         })
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           dispatch(updateCartFromBackend(data.existingCart));
-          console.log("check hua cart");
+          // console.log("check hua cart");
         })
         .catch((error) => {
           console.error("There was a problem with the fetch operation:", error);
@@ -317,7 +318,7 @@ const Product = () => {
   //     if (token) {
 
   //         // Fetch the API endpoint
-  //         fetch(`https://mamosh-backend-two.vercel.app/api/addcart/checkvar`, {
+  //         fetch(`https://backend.mamoshfashion.com/api/addcart/checkvar`, {
   //             method: 'POST',
   //             headers: {
   //                 'Content-Type': 'application/json',
@@ -357,28 +358,37 @@ const Product = () => {
     }
   }, [colorcount]);
 
-  useEffect(() => {
-    if (backend.connectedImage.length !== 0) {
-      if (backend.ind !== backend.variants.length) {
-        let vari = backend.variants[backend.ind].title; //get size as title
-        let selvari = selectedVariants[vari]; // get a size
-        let selind = backend.variants[backend.ind].options.indexOf(selvari);
-        console.log(selind, "selvari");
-        if (backend.connectedImage[selind].length === 0) {
-          let tm = [...backend.images, ...backend.videoPreviewImgs];
-          let tmv = [...backend.images, ...backend.videos];
-          Setmedia(tm);
-          Setmediabig(tmv);
-        } else {
-          let tempseriescol = backend.connectedImage[selind];
-          let tempbig = [...tempseriescol, ...backend.videos];
-          tempseriescol = [...tempseriescol, ...backend.videoPreviewImgs];
-          Setmedia(tempseriescol);
-          Setmediabig(tempbig);
-        }
-      }
-    }
-  }, [varcount]);
+   useEffect(() => {
+     if (backend.connectedImage.length !== 0) {
+       if (backend.ind !== backend.variants.length) {
+         let vari = backend.variants[backend.ind].title; //get size as title
+         let selvari = selectedVariants[vari]; // get a size
+         let selind = backend.variants[backend.ind].options.indexOf(selvari);
+         console.log(selind, "selvari");
+         if (backend.connectedImage[selind].length === 0) {
+           let tm = [...backend.images, ...backend.videoPreviewImgs];
+           let tmv = [...backend.images, ...backend.videos];
+           Setmedia(tm);
+           Setmediabig(tmv);
+         } else {
+           let tempseriescol = backend.connectedImage[selind];
+           let tempbig = [...tempseriescol, ...backend.videos];
+           tempseriescol = [...tempseriescol, ...backend.videoPreviewImgs];
+           Setmedia(tempseriescol);
+           Setmediabig(tempbig);
+         }
+       }
+     }
+     else{
+           let tm = [...backend.images, ...backend.videoPreviewImgs];
+           let tmv = [...backend.images, ...backend.videos];
+           Setmedia(tm);
+           Setmediabig(tmv);
+     }
+   }, [varcount]);
+
+  // console.log(media)
+  // console.log(mediabig)
 
   // Call calculateFinalPrice whenever selectedVariants state changes
   function linearSearch(arr, criteria) {
@@ -411,8 +421,8 @@ const Product = () => {
       productid: productId,
     };
 
-    console.log(value, "value");
-    console.log(fullinfocart, "full");
+    // console.log(value, "value");
+    // console.log(fullinfocart, "full");
 
     // console.log(cart, "full2")
     if (backend.color) {
@@ -431,7 +441,7 @@ const Product = () => {
         );
       } else {
         toast.error("Select all varients");
-        console.log(selectedVariants,"selected")
+        // console.log(selectedVariants,"selected")
         // alert("Select all varients")
       }
     } else {
@@ -483,7 +493,7 @@ const Product = () => {
               variants: el.variants[0], // assuming variants is an array and you want to send the first variant
             });
             // const data = await response.json();
-            console.log("plplpll", data);
+            // console.log("plplpll", data);
             return data; // Assuming you get the price from the response
           } catch (error) {
             console.error("Error fetching price:", error);
@@ -492,12 +502,12 @@ const Product = () => {
         })
       );
       setPrices(updatedPrices);
-      console.log("kokok", updatedPrices);
+      // console.log("kokok", updatedPrices);
       let sum = 0;
       for (let i = 0; i < updatedPrices.length; i++) {
         sum += updatedPrices[i];
       }
-      console.log("total amount", sum);
+      // console.log("total amount", sum);
       Settotalamount(sum);
     };
     {
@@ -577,7 +587,7 @@ const Product = () => {
   const defaultvari = ()=>{
     if(backend.color){
       setSelectedVariants({Color : backend.colorVar[0].options[0],...selectedVariants})
-      console.log(selectedVariants,"default")
+      // console.log(selectedVariants,"default")
     }
   }
 
@@ -607,7 +617,7 @@ const Product = () => {
     // Event listener for window resize
     window.addEventListener("resize", handleResize);
 
-    console.log(selectedVariants,"selected")
+    // console.log(selectedVariants,"selected")
     // defaultvari()
 
     // Cleanup
@@ -761,7 +771,7 @@ const Product = () => {
                                 //   ...prevCartdata,
                                 //   color,
                                 // }));
-                                console.log(selectedVariants,"default")
+                                // console.log(selectedVariants,"default")
                                 // if(j!=0){
                                   // Setdefcol(j)
                                 

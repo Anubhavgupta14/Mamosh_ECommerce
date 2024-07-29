@@ -204,7 +204,7 @@ export default function BasicTabs() {
       const token = localStorage.getItem("token");
 
       // const response = await fetch(
-      //   `https://mamosh-backend-two.vercel.app/api/user/getone`,
+      //   `https://backend.mamoshfashion.com/api/user/getone`,
       //   {
       //     method: "POST",
       //     headers: {
@@ -243,7 +243,7 @@ export default function BasicTabs() {
       try {
         setLoad(true);
         // const response = await fetch(
-        //   `https://mamosh-backend-two.vercel.app/api/user/updateuser`,
+        //   `https://backend.mamoshfashion.com/api/user/updateuser`,
         //   {
         //     method: "POST", // Assuming you're sending data via POST method
         //     headers: {

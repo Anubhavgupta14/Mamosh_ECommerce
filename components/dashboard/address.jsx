@@ -76,7 +76,7 @@ const General = ({email}) => {
   //     const token = localStorage.getItem("token");
 
   //     const response = await fetch(
-  //       `https://mamosh-backend-two.vercel.app/api/user/getone`,
+  //       `https://backend.mamoshfashion.com/api/user/getone`,
   //       {
   //         method: "POST",
   //         headers: {
@@ -104,7 +104,7 @@ const General = ({email}) => {
       const token = localStorage.getItem("token");
 
       // const response = await fetch(
-      //   `https://mamosh-backend-two.vercel.app/api/address/checkaddress`,
+      //   `https://backend.mamoshfashion.com/api/address/checkaddress`,
       //   {
       //     method: "POST",
       //     headers: {

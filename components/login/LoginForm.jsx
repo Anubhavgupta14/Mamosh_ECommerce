@@ -47,7 +47,7 @@ const LoginForm = ({ setLogin }) => {
 			}
 	
 			// Fetch data from the backend
-			const response = await fetch(`https://mamosh-backend-two.vercel.app/api/addcart/getcart`, {
+			const response = await fetch(`https://backend.mamoshfashion.com/api/addcart/getcart`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -73,7 +73,7 @@ const LoginForm = ({ setLogin }) => {
 		setLoad(true);
 		if (validate()) {
 			try {
-				const response = await fetch(`https://mamosh-backend-two.vercel.app/api/user/signin`, {
+				const response = await fetch(`https://backend.mamoshfashion.com/api/user/signin`, {
 					method: 'POST',
 					headers: {
 						'Content-type': 'Application/json'
